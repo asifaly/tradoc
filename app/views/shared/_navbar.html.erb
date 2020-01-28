@@ -5,10 +5,10 @@
   </div>
 <% end %>
 
-<nav class="flex items-center justify-between flex-wrap bg-white border-b px-4 py-2" data-controller="toggle">
+<nav class="flex items-center justify-between flex-wrap bg-white shadow-lg border-b px-4 py-1" data-controller="toggle">
   <div class="flex items-center flex-shrink-0 mr-6">
     <%= link_to root_path do %>
-      <%= render_svg "logo", styles: "fill-current text-gray-700 hover:text-gray-800" %>
+      <%= image_tag "logo.png", :class => "logoimg" %>
       <span class="sr-only"><%= Jumpstart.config.application_name %></span>
     <% end %>
   </div>
@@ -63,7 +63,7 @@
                   <%= link_to 'Sidekiq', admin_sidekiq_web_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap', target: :_blank, data: { turbolinks: false } if defined?(::Sidekiq) %>
                 <% end %>
 
-                <% if Rails.env.development? %>
+                <% if Rails.env.development? && current_user.admin? %>
                   <div class="border-t px-6 py-3 text-gray-800 bg-white font-bold text-xs uppercase">Development</div>
                   <%= link_to 'Jumpstart Config', jumpstart_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap', data: { turbolinks: false } %>
                   <%= link_to 'Jumpstart Docs', jumpstart.docs_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap', target: :_blank, data: { turbolinks: false } %>
@@ -78,7 +78,7 @@
 
       <% else %>
         <%= link_to 'Log In', new_user_session_path, class: 'nav-link' %>
-        <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary' %>
+        <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary rounded-0 shadow-lg' %>
       <% end %>
 
     </div>

@@ -39,7 +39,7 @@
             <div data-target="dropdown.menu" class="lg:absolute lg:right-0 mt-2 hidden z-20">
               <div class="bg-white shadow rounded border overflow-hidden">
                 <%= link_to current_team, class: 'border-b text-sm no-underline block px-6 py-3 text-gray-800 bg-white hover:bg-gray-300 whitespace-no-wrap' do %>
-                  Signed in as <strong><%= current_team.name %></strong>
+                  Signed in as <strong><%= current_user.name %></strong>
                 <% end %>
 
                 <%= link_to 'Profile',  edit_user_registration_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white hover:bg-gray-300 whitespace-no-wrap' %>
@@ -49,13 +49,9 @@
                 <%#= link_to 'API',  subscription_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap' if Jumpstart.config.payments_enabled? %>
 
                 <!--
-                <div class="border-t px-6 py-3 text-gray-800 bg-white font-bold text-xs uppercase">Teams</div>
+                <div class="px-6 py-3 text-gray-800 bg-white text-sm">Teams</div>
                 -->
-                <%= link_to "Teams", teams_path, class: 'border-t text-xs uppercase font-bold text-gray-800 no-underline block px-6 py-3 bg-white hover:bg-gray-300 whitespace-no-wrap' %>
-                <% current_user.teams.each do |team| %>
-                  <%= link_to team.name, switch_team_path(team), remote: true, method: :patch, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white hover:bg-gray-300 whitespace-no-wrap' %>
-                <% end %>
-
+                <%= link_to "Teams", teams_path, class: 'text-sm text-gray-800 no-underline block px-6 py-3 bg-white hover:bg-gray-300 whitespace-no-wrap' %>
 
                 <% if current_user.admin? %>
                   <div class="border-t px-6 py-3 text-gray-800 bg-white font-bold text-xs uppercase">Admin</div>
@@ -63,7 +59,7 @@
                   <%= link_to 'Sidekiq', admin_sidekiq_web_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap', target: :_blank, data: { turbolinks: false } if defined?(::Sidekiq) %>
                 <% end %>
 
-                <% if Rails.env.development? && current_user.admin? %>
+                <% if Rails.env.development? %>
                   <div class="border-t px-6 py-3 text-gray-800 bg-white font-bold text-xs uppercase">Development</div>
                   <%= link_to 'Jumpstart Config', jumpstart_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap', data: { turbolinks: false } %>
                   <%= link_to 'Jumpstart Docs', jumpstart.docs_path, class: 'no-underline block px-6 py-3 text-sm text-gray-800 bg-white  hover:bg-gray-300 whitespace-no-wrap', target: :_blank, data: { turbolinks: false } %>

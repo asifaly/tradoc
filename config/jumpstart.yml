@@ -1,0 +1,12 @@
+--- !ruby/object:Jumpstart::Configuration
+application_name: Tradoc
+business_name: Tradoc Company, LLC
+domain: example.com
+support_email: support@tradoc.com
+default_from_email: Jumpstart <support@example.com>
+business_address: |-
+  8th Floor, Purva Primus,
+  Thoraipakkam,
+  Chennai, Tamilnadu, India
+background_job_processor: async
+email_provider: ''

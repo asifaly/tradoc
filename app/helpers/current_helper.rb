@@ -2,6 +2,8 @@ module CurrentHelper
   def current_team
     @current_team ||= current_user.teams.find(session[:team_id])
   rescue ActiveRecord::RecordNotFound
+    # TODO Optimize the selection of impersonal team
+    @current_team ||= current_user.teams.impersonal.first
     @current_team ||= current_user.teams.first
     @current_team ||= current_user.create_personal_team
   end

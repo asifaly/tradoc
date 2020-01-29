@@ -8,31 +8,50 @@
 // layout file, like app/views/layouts/application.html.erb
 
 // Rails functionality
-window.Rails = require("@rails/ujs")
-require("turbolinks").start()
-require("@rails/activestorage").start()
-require("channels")
-require("trix")
-require("@rails/actiontext")
+window.Rails = require("@rails/ujs");
+require("turbolinks").start();
+require("@rails/activestorage").start();
+require("channels");
+require("trix");
+require("@rails/actiontext");
 
 // Tailwind CSS
-import "stylesheets/application"
+import "stylesheets/application";
 
 // Stimulus controllers
-import "controllers"
+import "controllers";
 
 // Jumpstart Pro & other Functionality
-import "src/actiontext"
-import "src/confirm"
-import "src/direct_uploads"
-import "src/forms"
-import "src/timezone"
-import "src/tooltips"
+import "src/actiontext";
+import "src/confirm";
+import "src/direct_uploads";
+import "src/forms";
+import "src/timezone";
+import "src/tooltips";
 
-import LocalTime from "local-time"
-LocalTime.start()
+import LocalTime from "local-time";
+LocalTime.start();
 
 // ADD YOUR JAVACSRIPT HERE
 
+document.addEventListener(
+  "turbolinks:load",
+  () =>
+    setTimeout(function() {
+      document.getElementById("notice").remove();
+      document.getElementById("alert").remove();
+    }, 3000),
+  {
+    once: true
+  }
+);
+
+// Called after every non-initial page load
+document.addEventListener("turbolinks:render", () =>
+  setTimeout(function() {
+    document.getElementById("notice").remove();
+    document.getElementById("alert").remove();
+  }, 3000)
+);
 // Start Rails UJS
-Rails.start()
+Rails.start();

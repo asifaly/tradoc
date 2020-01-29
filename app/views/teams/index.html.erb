@@ -8,8 +8,7 @@
 
       <div class="flex justify-between items-center mb-3">
         <h1 class="h2 flex-1">Teams</h1>
-
-        <% if @teams.exists? %>
+        <% if @teams.exists? && !@teams.impersonal.exists? %>
           <div>
             <%= link_to 'Create a Team', new_team_path, class: "btn btn-primary" %>
           </div>

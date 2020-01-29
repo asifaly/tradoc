@@ -38,8 +38,12 @@ document.addEventListener(
   "turbolinks:load",
   () =>
     setTimeout(function() {
-      document.getElementById("notice").remove();
-      document.getElementById("alert").remove();
+      document.getElementById("notice") !== null
+        ? document.getElementById("notice").remove()
+        : "";
+      document.getElementById("alert") !== null
+        ? document.getElementById("alert").remove()
+        : "";
     }, 3000),
   {
     once: true
@@ -49,8 +53,12 @@ document.addEventListener(
 // Called after every non-initial page load
 document.addEventListener("turbolinks:render", () =>
   setTimeout(function() {
-    document.getElementById("notice").remove();
-    document.getElementById("alert").remove();
+    document.getElementById("notice") !== null
+      ? document.getElementById("notice").remove()
+      : "";
+    document.getElementById("alert") !== null
+      ? document.getElementById("alert").remove()
+      : "";
   }, 3000)
 );
 // Start Rails UJS

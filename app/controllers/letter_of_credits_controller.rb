@@ -22,6 +22,8 @@ class LetterOfCreditsController < ApplicationController
   # POST /letter_of_credits
   def create
     @letter_of_credit = LetterOfCredit.new(letter_of_credit_params)
+    @letter_of_credit.user = current_user
+    @letter_of_credit.team = current_team
 
     if @letter_of_credit.save
       redirect_to @letter_of_credit, notice: 'Letter of credit was successfully created.'
@@ -53,6 +55,6 @@ class LetterOfCreditsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def letter_of_credit_params
-      params.require(:letter_of_credit).permit(:lc_number, :expiry_date, :client, :comment, :user_id, :team_id)
+      params.require(:letter_of_credit).permit(:lc_number, :expiry_date, :client, :comment, :user_id, :team_id, files:[])
     end
 end

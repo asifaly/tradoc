@@ -24,12 +24,18 @@
       </div>
             <div class="mb-4">
         <h5>User</h5>
-        <%= @letter_of_credit.user %>
+        <%= @letter_of_credit.user_id %>
       </div>
             <div class="mb-4">
         <h5>Team</h5>
-        <%= @letter_of_credit.team %>
+        <%= @letter_of_credit.team_id %>
       </div>
+
+      <div class="mb-4">
+      <h5>Files</h5>
+      <%= @letter_of_credit.files.each do |file| %>
+        <%= link_to file.filename, file, target: :blank %>
+      <% end %>
           </div>
   </div>
 </div>

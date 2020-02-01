@@ -10,3 +10,5 @@ business_address: |-
   Chennai, Tamilnadu, India
 background_job_processor: async
 email_provider: ''
+payment_processors:
+- stripe

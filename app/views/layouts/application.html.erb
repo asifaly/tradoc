@@ -29,12 +29,12 @@
     <%= yield :head %>
   </head>
 
-  <body class="font-sans font-normal leading-normal h-full antialiased">
+  <body class="font-sans font-normal leading-normal w-full antialiased">
     <div class="main">
       <%= render partial: "shared/flash" %>
       <%= render partial: "shared/navbar" %>
 
-      <div class="px-3 lg:px-0">
+      <div>
         <%= yield %>
       </div>
     </div>

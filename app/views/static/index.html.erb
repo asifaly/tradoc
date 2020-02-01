@@ -1,8 +1,19 @@
-<div class="flex flex-col pl-4 vertical-center gradindi">
+<div class="flex flex-wrap p-6 vertical-center gradindi justify-center">
+    <div class="flex flex-col lg:w-2/5 justify-center">
+  <%= image_tag "solution.svg", :class => "max-w-sm object-contain" %>
+  </div>
+  <div class="flex flex-col lg:w-3/5 justify-center">
   <h1 class="mb-2 font-black text-white">Trusted advisors to Exporters</h1>
-  <p class="mb-6 leading-normal text-xl text-white font-light">LC documents prepared and delivered in 60 minutes! in 3 easy steps</p>
-  <%= link_to "Get Started!", new_user_session_path, class: "btn btn-primary lg:mr-4 mr-0 lg:mb-0 mb-4" %>
-
+  <ul class="fa-ul">
+  <li class="mb-3 leading-normal text-xl text-white font-light"><span class="fa-li"><i class="fas fa-check-square"></i></span>Digital Platform for your LC Documentation Needs</li>
+  <li class="mb-3 leading-normal text-xl text-white font-light"><span class="fa-li"><i class="fas fa-check-square"></i></span>Expert Advise from Seasoned Ex-Bankers</li>
+  <li class="mb-3 leading-normal text-xl text-white font-light"><span class="fa-li"><i class="fas fa-check-square"></i></span>Quick, Error-free, Cost-Effective!</li>
+  </ul>
+  <div>
+  <%= link_to "Get Started!", new_user_session_path, class: "btn btn-primary max-w-xs shadow-lg lg:mr-4 mr-0 lg:mb-0 mb-4" %>
+</div>
+  </div>
+</div>
   <%
 =begin%>
  <% if Rails.env.development? %>
@@ -20,12 +31,11 @@
   <% end %> 
 <%
 =end%>
-</div>
-<div class="flex flex-wrap items-center justify-center bg-white p-6">
+<div class="flex flex-wrap items-center lg:justify-between justify-center bg-white p-6">
 <div class="w-full text-center mb-6 mt-4">
 <h2>How it works?</h2>
 </div>
-<div class="max-w-sm overflow-hidden w-full lg:w-1/3 m-2 text-center">
+<div class="max-w-sm overflow-hidden w-full lg:w-1/3 text-center">
 <div class="text-lg font-bold">Step 1</div>
   <div class="px-6 py-2">
     <p class="text-gray-700 text-base p-2">
@@ -35,7 +45,7 @@
   </div>
 </div>
 
-<div class="max-w-sm overflow-hidden w-full lg:w-1/3 m-2 text-center">
+<div class="max-w-sm overflow-hidden w-full lg:w-1/3 text-center">
 <div class="text-lg font-bold">Step 2</div>
   <div class="px-6 py-2">
     <p class="text-gray-700 text-base p-2">
@@ -45,7 +55,7 @@
     </div>
 </div>
 
-<div class="max-w-sm overflow-hidden w-full lg:w-1/3 m-2 text-center">
+<div class="max-w-sm overflow-hidden w-full lg:w-1/3 text-center">
 <div class="text-lg font-bold">Step 3</div>
   <div class="px-6 py-2">
     <p class="text-gray-700 text-base p-2">

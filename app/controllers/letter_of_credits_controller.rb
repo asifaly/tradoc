@@ -1,4 +1,5 @@
 class LetterOfCreditsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_letter_of_credit, only: [:show, :edit, :update, :destroy]
 
   # GET /letter_of_credits

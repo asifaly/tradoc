@@ -1,7 +1,6 @@
  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
 
-  resources :letter_of_credits
   # Jumpstart views
   if Rails.env.development? || Rails.env.test?
     mount Jumpstart::Engine, at: '/jumpstart'
@@ -29,7 +28,7 @@ Rails.application.routes.draw do
         resources :subscriptions
       end
 
-      root to: "dashboard#show"
+      root to: "letter_of_credit#index"
     end
   end
 
@@ -50,6 +49,7 @@ Rails.application.routes.draw do
                registrations: 'users/registrations',
              }
 
+  resources :letter_of_credits
   resources :announcements, only: [:index]
   resources :api_tokens
   resources :teams do
@@ -97,7 +97,7 @@ Rails.application.routes.draw do
   match "/500", via: :all, to: "errors#internal_server_error"
 
   authenticated :user do
-    root to: "dashboard#show", as: :user_root
+    root to: "letter_of_credits#index", as: :user_root
   end
 
   # Public marketing homepage

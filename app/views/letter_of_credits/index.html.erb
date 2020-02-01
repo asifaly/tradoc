@@ -1,0 +1,59 @@
+<div class="container mx-auto my-8 px-4">
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="h3">Letter Of Credits</h1>
+
+    <% if @letter_of_credits.exists? %>
+      <%= link_to 'New Letter Of Credit', new_letter_of_credit_path, class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <% if @letter_of_credits.exists? %>
+    <div class="bg-white rounded shadow table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Lc number</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Expiry date</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Client</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Comment</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">User</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Team</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700 w-20">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @letter_of_credits.each do |letter_of_credit| %>
+          <tr class="group border-t border-gray-400 hover:bg-gray-100">
+                      <td class="p-3"><%= letter_of_credit.lc_number %></td>
+                      <td class="p-3"><%= letter_of_credit.expiry_date %></td>
+                      <td class="p-3"><%= letter_of_credit.client %></td>
+                      <td class="p-3"><%= letter_of_credit.comment %></td>
+                      <td class="p-3"><%= letter_of_credit.user_id %></td>
+                      <td class="p-3"><%= letter_of_credit.team_id %></td>
+          
+            <td>
+              <%= link_to "View", letter_of_credit, class: "btn btn-link no-underline" %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <% if @pagy.pages > 1 %>
+      <div class="text-center my-6">
+        <%== pagy_nav(@pagy) %>
+      </div>
+    <% end %>
+
+  <% else %>
+    <div class="bg-white rounded shadow flex flex-col items-center justify-between p-8 lg:flex-row">
+      <%= image_tag "empty.svg", class: "mb-4 lg:w-1/2" %>
+      <div class="flex-1 text-center">
+        <p class="h3 mb-4">Create your first Letter Of Credit</p>
+        <%= link_to 'New Letter Of Credit', new_letter_of_credit_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

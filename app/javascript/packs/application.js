@@ -17,6 +17,7 @@ require("@rails/actiontext");
 
 // Tailwind CSS
 import "stylesheets/application";
+import "flatpickr/dist/themes/airbnb.css";
 
 // Stimulus controllers
 import "controllers";
@@ -33,6 +34,19 @@ import LocalTime from "local-time";
 LocalTime.start();
 
 // ADD YOUR JAVACSRIPT HERE
+
+// ./packs/application.js
+import { Application } from "stimulus";
+// import Flatpickr
+import Flatpickr from "stimulus-flatpickr";
+
+import { definitionsFromContext } from "stimulus/webpack-helpers";
+const application = Application.start();
+const context = require.context("../controllers", true, /\.js$/);
+application.load(definitionsFromContext(context));
+
+// Manually register Flatpickr as a stimulus controller
+application.register("flatpickr", Flatpickr);
 
 document.addEventListener(
   "turbolinks:load",

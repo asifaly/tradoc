@@ -75,7 +75,7 @@ gem "pg_search", "~> 2.3"
 gem "receipts", "~> 0.2.2"
 gem "ruby-oembed", "~> 0.12.0", require: "oembed"
 gem "turbolinks_render", "~> 0.9.12"
-
+gem "aws-sdk-s3"
 # We always want the latest versions of these gems, so no version numbers
 gem "omniauth", github: "omniauth/omniauth"
 gem "strong_migrations"

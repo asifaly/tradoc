@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_10_222159) do
+ActiveRecord::Schema.define(version: 2020_02_01_144452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,19 @@ ActiveRecord::Schema.define(version: 2020_01_10_222159) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["token"], name: "index_api_tokens_on_token", unique: true
     t.index ["user_id"], name: "index_api_tokens_on_user_id"
+  end
+
+  create_table "letter_of_credits", force: :cascade do |t|
+    t.string "lc_number"
+    t.date "expiry_date"
+    t.string "client"
+    t.string "comment"
+    t.bigint "user_id", null: false
+    t.bigint "team_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["team_id"], name: "index_letter_of_credits_on_team_id"
+    t.index ["user_id"], name: "index_letter_of_credits_on_user_id"
   end
 
   create_table "pay_charges", force: :cascade do |t|
@@ -211,6 +224,8 @@ ActiveRecord::Schema.define(version: 2020_01_10_222159) do
   end
 
   add_foreign_key "api_tokens", "users"
+  add_foreign_key "letter_of_credits", "teams"
+  add_foreign_key "letter_of_credits", "users"
   add_foreign_key "team_invitations", "teams"
   add_foreign_key "team_invitations", "users", column: "invited_by_id"
   add_foreign_key "team_members", "teams"

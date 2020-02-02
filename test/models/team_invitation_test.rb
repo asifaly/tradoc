@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class TeamInvitationTest < ActiveSupport::TestCase
@@ -5,9 +7,9 @@ class TeamInvitationTest < ActiveSupport::TestCase
     @team_invitation = team_invitations(:one)
   end
 
-  test "accept" do
+  test 'accept' do
     user = users(:noteam)
-    assert_difference "TeamMember.count" do
+    assert_difference 'TeamMember.count' do
       team_member = @team_invitation.accept!(user)
       assert team_member.persisted?
       assert_equal user, team_member.user
@@ -18,8 +20,8 @@ class TeamInvitationTest < ActiveSupport::TestCase
     end
   end
 
-  test "reject" do
-    assert_difference "TeamInvitation.count", -1 do
+  test 'reject' do
+    assert_difference 'TeamInvitation.count', -1 do
       @team_invitation.reject!
     end
   end

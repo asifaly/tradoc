@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class Jumpstart::TeamsTeamInvitationsTest < ActionDispatch::IntegrationTest
@@ -12,29 +14,31 @@ class Jumpstart::TeamsTeamInvitationsTest < ActionDispatch::IntegrationTest
       sign_in @admin
     end
 
-    test "can view invite form" do
+    test 'can view invite form' do
       get new_team_team_invitation_path(@team)
       assert_response :success
     end
 
-    test "can invite team members" do
-      name, email = "Team Member", "new-member@example.com"
-      assert_difference "@team.team_invitations.count" do
-        post team_team_invitations_path(@team), params: { team_invitation: { name: name, email: email, admin: "0" } }
+    test 'can invite team members' do
+      name = 'Team Member'
+      email = 'new-member@example.com'
+      assert_difference '@team.team_invitations.count' do
+        post team_team_invitations_path(@team), params: { team_invitation: { name: name, email: email, admin: '0' } }
       end
       assert_not @team.team_invitations.last.admin?
     end
 
-    test "can invite team members with roles" do
-      name, email = "Team Member", "new-member@example.com"
-      assert_difference "@team.team_invitations.count" do
-        post team_team_invitations_path(@team), params: { team_invitation: { name: name, email: email, admin: "1" } }
+    test 'can invite team members with roles' do
+      name = 'Team Member'
+      email = 'new-member@example.com'
+      assert_difference '@team.team_invitations.count' do
+        post team_team_invitations_path(@team), params: { team_invitation: { name: name, email: email, admin: '1' } }
       end
       assert @team.team_invitations.last.admin?
     end
 
-    test "can cancel invitation" do
-      assert_difference "@team.team_invitations.count", -1 do
+    test 'can cancel invitation' do
+      assert_difference '@team.team_invitations.count', -1 do
         delete team_team_invitation_path(@team, @team.team_invitations.last)
       end
     end
@@ -45,19 +49,19 @@ class Jumpstart::TeamsTeamInvitationsTest < ActionDispatch::IntegrationTest
       sign_in @regular_user
     end
 
-    test "cannot view invite form" do
+    test 'cannot view invite form' do
       get new_team_team_invitation_path(@team)
       assert_response :redirect
     end
 
-    test "cannot invite team members" do
-      assert_no_difference "@team.team_invitations.count" do
-        post team_team_invitations_path(@team), params: { team_invitation: { name: "test", email: "new-member@example.com", admin: "0" } }
+    test 'cannot invite team members' do
+      assert_no_difference '@team.team_invitations.count' do
+        post team_team_invitations_path(@team), params: { team_invitation: { name: 'test', email: 'new-member@example.com', admin: '0' } }
       end
     end
 
-    test "can cancel invitation" do
-      assert_no_difference "@team.team_invitations.count" do
+    test 'can cancel invitation' do
+      assert_no_difference '@team.team_invitations.count' do
         delete team_team_invitation_path(@team, @team.team_invitations.last)
       end
     end

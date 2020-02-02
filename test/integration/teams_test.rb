@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class Jumpstart::TeamsTest < ActionDispatch::IntegrationTest
@@ -12,33 +14,33 @@ class Jumpstart::TeamsTest < ActionDispatch::IntegrationTest
       sign_in @admin
     end
 
-    test "can edit team" do
+    test 'can edit team' do
       get edit_team_path(@team)
       assert_response :success
-      assert_select "button", "Update Team"
+      assert_select 'button', 'Update Team'
     end
 
-    test "can update team" do
-      put team_path(@team), params: { team: { name: "Test Team 2" } }
+    test 'can update team' do
+      put team_path(@team), params: { team: { name: 'Test Team 2' } }
       assert_redirected_to team_path(@team)
       follow_redirect!
-      assert_select "h1", "Test Team 2"
+      assert_select 'h1', 'Test Team 2'
     end
 
-    test "can delete team" do
-      assert_difference "Team.count", -1 do
+    test 'can delete team' do
+      assert_difference 'Team.count', -1 do
         delete team_path(@team)
       end
       assert_redirected_to teams_path
-      assert_equal flash[:notice], "Team was successfully destroyed."
+      assert_equal flash[:notice], 'Team was successfully destroyed.'
     end
 
     test 'cannot delete personal team' do
       team = @admin.personal_team
-      assert_no_difference "Team.count" do
+      assert_no_difference 'Team.count' do
         delete team_path(team)
       end
-      assert_equal flash[:alert], "You cannot delete your personal team."
+      assert_equal flash[:alert], 'You cannot delete your personal team.'
     end
   end
 
@@ -47,21 +49,21 @@ class Jumpstart::TeamsTest < ActionDispatch::IntegrationTest
       sign_in @regular_user
     end
 
-    test "cannot edit team" do
+    test 'cannot edit team' do
       get edit_team_path(@team)
       assert_redirected_to team_path(@team)
     end
 
-    test "cannot update team" do
+    test 'cannot update team' do
       name = @team.name
-      put team_path(@team), params: { team: { name: "Test Team Changed" } }
+      put team_path(@team), params: { team: { name: 'Test Team Changed' } }
       assert_redirected_to team_path(@team)
       follow_redirect!
-      assert_select "h1", name
+      assert_select 'h1', name
     end
 
-    test "cannot delete team" do
-      assert_no_difference "Team.count" do
+    test 'cannot delete team' do
+      assert_no_difference 'Team.count' do
         delete team_path(@team)
       end
       assert_redirected_to team_path(@team)

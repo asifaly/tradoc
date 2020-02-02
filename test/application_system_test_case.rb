@@ -1,11 +1,13 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1400]
 
   include Warden::Test::Helpers
 
-  def fill_stripe_elements(card: , expiry: '1234', cvc: '123', postal: '12345', selector: '[data-target="stripe.card"] > div > iframe')
+  def fill_stripe_elements(card:, expiry: '1234', cvc: '123', postal: '12345', selector: '[data-target="stripe.card"] > div > iframe')
     find_frame(selector) do
       card.to_s.chars.each do |piece|
         find_field('cardnumber').send_keys(piece)
@@ -21,7 +23,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     find_frame('body > div > iframe') do
       sleep 1
       find_frame('#challengeFrame') do
-        click_on "Complete authentication"
+        click_on 'Complete authentication'
       end
     end
   end
@@ -30,7 +32,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     find_frame('body > div > iframe') do
       sleep 1
       find_frame('#challengeFrame') do
-        click_on "Fail authentication"
+        click_on 'Fail authentication'
       end
     end
   end

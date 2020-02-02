@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: team_members
@@ -23,29 +25,29 @@
 require 'test_helper'
 
 class TeamMemberTest < ActiveSupport::TestCase
-  test "converts roles to booleans" do
-    member = TeamMember.new admin: "1"
+  test 'converts roles to booleans' do
+    member = TeamMember.new admin: '1'
     assert_equal true, member.admin
   end
 
-  test "can be assigned a role" do
+  test 'can be assigned a role' do
     member = TeamMember.new admin: true
     assert_equal true, member.admin
     assert_equal true, member.admin?
   end
 
-  test "role can be false" do
+  test 'role can be false' do
     member = TeamMember.new admin: false
     assert_equal false, member.admin
     assert_equal false, member.admin?
   end
 
-  test "keeps track of active roles" do
+  test 'keeps track of active roles' do
     member = TeamMember.new admin: true
     assert_equal [:admin], member.active_roles
   end
 
-  test "has no active roles" do
+  test 'has no active roles' do
     member = TeamMember.new admin: false
     assert_empty member.active_roles
   end

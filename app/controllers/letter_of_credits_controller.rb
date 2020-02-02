@@ -1,6 +1,7 @@
+# frozen_string_literal: true
 class LetterOfCreditsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_letter_of_credit, only: [:show, :edit, :update, :destroy]
+  before_action :set_letter_of_credit, only: %i[show edit update destroy]
 
   # GET /letter_of_credits
   def index
@@ -8,8 +9,7 @@ class LetterOfCreditsController < ApplicationController
   end
 
   # GET /letter_of_credits/1
-  def show
-  end
+  def show; end
 
   # GET /letter_of_credits/new
   def new
@@ -17,8 +17,7 @@ class LetterOfCreditsController < ApplicationController
   end
 
   # GET /letter_of_credits/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /letter_of_credits
   def create
@@ -49,13 +48,13 @@ class LetterOfCreditsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_letter_of_credit
-      @letter_of_credit = LetterOfCredit.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_letter_of_credit
+    @letter_of_credit = LetterOfCredit.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def letter_of_credit_params
-      params.require(:letter_of_credit).permit(:lc_number, :expiry_date, :client, :comment, :user_id, :team_id, files:[])
-    end
+  # Only allow a trusted parameter "white list" through.
+  def letter_of_credit_params
+    params.require(:letter_of_credit).permit(:lc_number, :expiry_date, :client, :comment, :user_id, :team_id, files:[])
+  end
 end

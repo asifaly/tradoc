@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -43,19 +45,19 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  test "user has many teams" do
+  test 'user has many teams' do
     user = users(:one)
     assert_includes user.teams, teams(:one)
     assert_includes user.teams, teams(:company)
   end
 
-  test "user has a personal team" do
+  test 'user has a personal team' do
     user = users(:one)
     assert_equal teams(:one), user.personal_team
   end
 
-  test "can delete user with teams" do
-    assert_difference "User.count", -1 do
+  test 'can delete user with teams' do
+    assert_difference 'User.count', -1 do
       users(:one).destroy
     end
   end

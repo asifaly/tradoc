@@ -1,0 +1,21 @@
+ <div class="mb-4">
+        <h5>Expiry date</h5>
+        <%= letter_of_credit.expiry_date %>
+      </div>
+      <div class="mb-4">
+        <h5>Client</h5>
+        <%= letter_of_credit.client %>
+      </div>
+      <div class="mb-4">
+        <h5>Comment</h5>
+        <%= letter_of_credit.comment %>
+      </div>
+      <div class="mb-4">
+        <h5>User</h5>
+        <%= letter_of_credit.user_id %>
+      </div>
+      <div class="mb-4">
+        <h5>Team</h5>
+        <%= letter_of_credit.team_id %>
+      </div>
+      <%= render 'files', letter_of_credit: letter_of_credit %>

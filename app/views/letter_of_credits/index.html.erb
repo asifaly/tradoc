@@ -1,4 +1,4 @@
-<div class="container mx-auto my-8 px-4">
+<div class="container mx-auto my-8 px-2">
   <div class="flex justify-between items-center mb-4">
     <h1 class="h3">Letter Of Credits</h1>
 
@@ -7,45 +7,53 @@
     <% end %>
   </div>
 
-  <% if @letter_of_credits.exists? %>
-    <div class="bg-white rounded shadow table-responsive">
-      <table class="table">
-        <thead>
-          <tr>
-            <th class="p-3 uppercase text-left text-xs text-gray-700">Lc number</th>
-            <th class="p-3 uppercase text-left text-xs text-gray-700">Expiry date</th>
-            <th class="p-3 uppercase text-left text-xs text-gray-700">Client</th>
-            <th class="p-3 uppercase text-left text-xs text-gray-700">Comment</th>
-            <th class="p-3 uppercase text-left text-xs text-gray-700">User</th>
-            <th class="p-3 uppercase text-left text-xs text-gray-700">Team</th>
-            <th class="p-3 uppercase text-left text-xs text-gray-700 w-20">Actions</th>
-          </tr>
-        </thead>
-
-        <tbody>
-        <% @letter_of_credits.each do |letter_of_credit| %>
-          <tr class="group border-t border-gray-400 hover:bg-gray-100">
-                      <td class="p-3"><%= letter_of_credit.lc_number %></td>
-                      <td class="p-3"><%= letter_of_credit.expiry_date %></td>
-                      <td class="p-3"><%= letter_of_credit.client %></td>
-                      <td class="p-3"><%= letter_of_credit.comment %></td>
-                      <td class="p-3"><%= letter_of_credit.user_id %></td>
-                      <td class="p-3"><%= letter_of_credit.team_id %></td>
-          
-            <td>
-              <%= link_to "View", letter_of_credit, class: "btn btn-link no-underline" %>
-            </td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
+    <% if @letter_of_credits.exists? %>
+    <div class="flex flex-wrap">
+      <% @letter_of_credits.each do |letter_of_credit| %>
+        <div class="w-full lg:w-1/4 bg-indigo-500 my-2 mx-2 shadow-lg">
+          <div class="bg-indigo-500 px-2 py-1">
+            <span class="text-white"><%= letter_of_credit.lc_number %></span>
+            <%= link_to letter_of_credit_path(letter_of_credit), method: :delete, data: { confirm: 'LC and all associated data will be deleted, Are you sure?' } do %>
+              <i class="fas fa-trash-alt float-right mt-1 text-white"></i>
+            <% end %>
+            </div>
+          <div class="flex flex-row flex-wrap border-b-2 border-gray-300">
+            <div class="w-1/3 bg-white text-gray-700 text-sm py-2">
+              <span class="px-2">Expiry</span>
+            </div>
+            <div class="w-2/3 bg-white text-sm py-2">
+              <span class="px-2"><%= letter_of_credit.expiry_date %></span>
+            </div>
+          </div>
+          <div class="flex flex-row flex-wrap border-b-2 border-gray-300">
+            <div class="w-1/3 bg-white text-gray-700 text-sm py-2">
+              <span class="px-2">Client</span>
+            </div>
+            <div class="w-2/3 bg-white text-sm py-2">
+              <span class="px-2"><%= letter_of_credit.client %></span>
+            </div>
+          </div>
+          <div class="flex flex-row flex-wrap border-b-2 border-gray-300">
+            <div class="w-1/3 bg-white text-gray-700 text-sm py-2">
+              <span class="px-2">Comment</span>
+            </div>
+            <div class="w-2/3 bg-white text-sm py-2">
+              <span class="px-2"><%= letter_of_credit.comment %></span>
+            </div>
+          </div>
+          <div class="flex flex-row flex-wrap bg-gray-300 text-xs">
+            <p class="px-2 py-2">Attachments<span class="bg-white rounded-full px-2 m-2"><%= letter_of_credit.files.count %></span></p>
+            <p class="px-2 py-2">Documents<span class="bg-white rounded-full px-2 m-2"><%= letter_of_credit.files.count %></span></p>
+          </div>
+        </div>
+      <% end %>
+      <% if @pagy.pages > 1 %>
+        <div class="text-center my-6">
+          <%== pagy_nav(@pagy) %>
+        </div>
+      <% end %>
     </div>
 
-    <% if @pagy.pages > 1 %>
-      <div class="text-center my-6">
-        <%== pagy_nav(@pagy) %>
-      </div>
-    <% end %>
 
   <% else %>
     <div class="bg-white rounded shadow flex flex-col items-center justify-between p-8 lg:flex-row">
@@ -57,3 +65,6 @@
     </div>
   <% end %>
 </div>
+
+
+

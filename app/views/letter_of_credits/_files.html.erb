@@ -1,6 +1,8 @@
+<% if letter_of_credit.files.attached? %>
 <div class="mb-4">
-  <h5>Files</h5>
-  <% @letter_of_credit.files.each do |file| %>
-    <%= link_to file.filename, file, target: :blank %>
+  <h5>Attached Files</h5>
+  <% letter_of_credit.files.each do |file| %>
+    <%= link_to file.filename, file, target: :blank, class:"btn" %>
   <% end %>
 </div>
+<% end %>

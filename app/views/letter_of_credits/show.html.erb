@@ -1,41 +1,37 @@
 <div class="container mx-auto my-8 px-4">
   <div class="max-w-2xl mx-auto">
     <div class="flex justify-between items-center mb-4">
-      <h1 class="h3"><%= link_to 'Letter Of Credits', letter_of_credits_path %> > Letter Of Credit #<%= @letter_of_credit.id %></h1>
+      <h1 class="h3"><%= link_to 'Letter Of Credits', letter_of_credits_path %> > Letter Of Credit
+        #<%= @letter_of_credit.id %></h1>
       <%= link_to 'Edit', edit_letter_of_credit_path(@letter_of_credit), class: "btn btn-link" %>
     </div>
 
     <div class="bg-white rounded shadow p-8">
-            <div class="mb-4">
+      <div class="mb-4">
         <h5>Lc number</h5>
         <%= @letter_of_credit.lc_number %>
       </div>
-            <div class="mb-4">
+      <div class="mb-4">
         <h5>Expiry date</h5>
         <%= @letter_of_credit.expiry_date %>
       </div>
-            <div class="mb-4">
+      <div class="mb-4">
         <h5>Client</h5>
         <%= @letter_of_credit.client %>
       </div>
-            <div class="mb-4">
+      <div class="mb-4">
         <h5>Comment</h5>
         <%= @letter_of_credit.comment %>
       </div>
-            <div class="mb-4">
+      <div class="mb-4">
         <h5>User</h5>
         <%= @letter_of_credit.user_id %>
       </div>
-            <div class="mb-4">
+      <div class="mb-4">
         <h5>Team</h5>
         <%= @letter_of_credit.team_id %>
       </div>
-
-      <div class="mb-4">
-      <h5>Files</h5>
-      <%= @letter_of_credit.files.each do |file| %>
-        <%= link_to file.filename, file, target: :blank %>
-      <% end %>
-          </div>
+      <%= render 'files' %>
+    </div>
   </div>
 </div>

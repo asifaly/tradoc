@@ -13,23 +13,35 @@
  *= require_self
  */
 .gradindi {
-  background: #4e54c8; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to bottom,
-    #4e54c8,
-    #8f94fb
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #4e54c8, #8f94fb);
+    background: #4e54c8; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+            to bottom,
+            #4e54c8,
+            #8f94fb
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #4e54c8, #8f94fb);
 }
 
 .vertical-center {
-  min-height: 100%; /* Fallback for browsers do NOT support vh unit */
-  min-height: 95vh; /* These two lines are counted as one :-)       */
-  display: flex;
-  align-items: items-center;
-  justify-content: center;
+    min-height: 100%; /* Fallback for browsers do NOT support vh unit */
+    min-height: 95vh; /* These two lines are counted as one :-)       */
+    display: flex;
+    align-items: items-center;
+    justify-content: center;
 }
 
 .logoimg {
-  height: 40px;
+    height: 40px;
+}
+
+.rotate {
+    -webkit-transition: 0.6s ease-out;
+    -moz-transition:  0.6s ease-out;
+    transition:  0.6s ease-out;
+}
+
+.rotate:hover {
+    -webkit-transform: rotateZ(360deg);
+    -moz-transform: rotateZ(360deg);
+    transform: rotateZ(360deg);
 }

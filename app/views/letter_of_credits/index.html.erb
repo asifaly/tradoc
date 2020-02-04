@@ -1,50 +1,15 @@
 <div class="my-8 mx-4 px-2">
-  <div class="flex flex-wrap justify-between items-center mb-4">
-    <h1 class="h3 font-bold">Letter Of Credits</h1>
+  <div class="flex flex-wrap mb-4">
+    <h1 class="h3 font-bold align-left">Letter Of Credits</h1>
     <% if @letter_of_credits.exists? %>
-      <%= link_to 'New Letter Of Credit', new_letter_of_credit_path, class: "btn btn-primary max-w-lg" %>
+      <%= link_to 'New Letter Of Credit', new_letter_of_credit_path, class: "btn btn-primary max-w-lg align-right" %>
     <% end %>
   </div>
 
-    <% if @letter_of_credits.exists? %>
+  <% if @letter_of_credits.exists? %>
     <div class="flex flex-wrap">
       <% @letter_of_credits.each do |letter_of_credit| %>
-        <div class="w-full lg:w-1/4 md:w-1/3 my-2 mx-2 shadow-sm hover:shadow-xl overflow-hidden">
-          <div class="bg-indigo-500 px-2 py-1">
-            <span class="text-white"><%= letter_of_credit.lc_number %></span>
-            <%= link_to letter_of_credit_path(letter_of_credit), method: :delete, data: { confirm: 'LC and all associated data will be deleted, Are you sure?' } do %>
-              <i class="fas fa-trash-alt float-right mt-1 text-white"></i>
-            <% end %>
-            </div>
-          <div class="flex flex-row flex-wrap border-b border-gray-300">
-            <div class="w-1/3 bg-white text-gray-700 text-sm py-2">
-              <span class="mx-2">Expiry</span>
-            </div>
-            <div class="w-2/3 bg-white text-sm py-2">
-              <span class="mx-2"><%= letter_of_credit.expiry_date %></span>
-            </div>
-          </div>
-          <div class="flex flex-row flex-wrap border-b border-gray-300">
-            <div class="w-1/3 bg-white text-gray-700 text-sm py-2">
-              <span class="mx-2">Client</span>
-            </div>
-            <div class="w-2/3 bg-white text-sm py-2">
-              <span class="mx-2"><%= letter_of_credit.client %></span>
-            </div>
-          </div>
-          <div class="flex flex-row flex-wrap border-b border-gray-300">
-            <div class="w-1/3 bg-white text-gray-700 text-sm py-2" style="height: 15vh">
-              <span class="mx-2">Comment</span>
-            </div>
-            <div class="w-2/3 bg-white text-sm py-2" style="height: 15vh; overflow-y: scroll">
-              <span class="mx-2"><%= letter_of_credit.comment %></span>
-            </div>
-          </div>
-          <div class="flex flex-row flex-wrap bg-gray-300 text-xs">
-            <p class="px-2 py-2">Attachments<span class="bg-white rounded-full px-2 m-2"><%= letter_of_credit.files.count %></span></p>
-            <p class="px-2 py-2">Documents<span class="bg-white rounded-full px-2 m-2"><%= letter_of_credit.files.count %></span></p>
-          </div>
-        </div>
+        <%= render 'card', letter_of_credit: letter_of_credit %>
       <% end %>
       <% if @pagy.pages > 1 %>
         <div class="text-center my-6">

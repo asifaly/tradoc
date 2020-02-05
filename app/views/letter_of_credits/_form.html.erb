@@ -31,6 +31,24 @@
     <%= form.file_field :files, multiple: true, direct_upload: true, class: "form-control" %>
   </div>
 
+  <div class="flex flex-row flex-wrap bg-gray-300 p-4">
+    <div class="w-full text-gray-700py-1">
+      <p class="px-2 py-1 uppercase text-xs">Attachments</p>
+    </div>
+    <div class="text-sm py-1">
+      <% if @letter_of_credit.files.count == 0 %>
+        <span class="bg-white rounded-full p-1 m-2 text-sm"><%= @letter_of_credit.files.count %></span>
+      <% else %>
+        <% @letter_of_credit.files.each do |file| %>
+          <span class="mx-2"><%= link_to file.filename, file, target: :blank %></span>
+          <%= link_to 'X', delete_file_attachment_letter_of_credit_url(file.signed_id),
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
   <div class="form-group flex justify-between">
     <%= form.button class: "btn btn-primary" %>
 

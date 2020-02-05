@@ -49,7 +49,11 @@ Rails.application.routes.draw do
                registrations: 'users/registrations',
              }
 
-  resources :letter_of_credits
+  resources :letter_of_credits do
+    member do
+      delete :delete_file_attachment
+    end
+  end
   resources :announcements, only: [:index]
   resources :api_tokens
   resources :teams do

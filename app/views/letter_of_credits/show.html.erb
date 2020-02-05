@@ -75,6 +75,9 @@
           <% else %>
             <% @letter_of_credit.files.each do |file| %>
               <span class="mx-2"><%= link_to file.filename, file, target: :blank %></span>
+              <%= link_to 'Remove', delete_image_attachment_collections_url(image.signed_id),
+                          method: :delete,
+                          data: { confirm: 'Are you sure?' } %>
             <% end %>
           <% end %>
         </div>

@@ -18,7 +18,9 @@ class LetterOfCreditsController < ApplicationController
   end
 
   # GET /letter_of_credits/1/edit
-  def edit; end
+  def edit
+    session[:return_to] ||= request.referer
+  end
 
   # POST /letter_of_credits
   def create
@@ -36,7 +38,7 @@ class LetterOfCreditsController < ApplicationController
   # PATCH/PUT /letter_of_credits/1
   def update
     if @letter_of_credit.update(letter_of_credit_params)
-      redirect_to @letter_of_credit, notice: 'Letter of credit was successfully updated.'
+      redirect_to session.delete(:return_to), notice: 'Letter of credit was successfully updated.'
     else
       render :edit
     end
@@ -48,7 +50,15 @@ class LetterOfCreditsController < ApplicationController
     redirect_to letter_of_credits_url, notice: 'Letter of credit was successfully destroyed.'
   end
 
+  def delete_file_attachment
+    session[:return_to] ||= request.referer
+    @file = ActiveStorage::Blob.find_signed(params[:id])
+    @file.attachments.first.purge
+    redirect_to session.delete(:return_to), notice: "#{@file.filename} successfully deleted"
+  end
+
   private
+
 
   # Use callbacks to share common setup or constraints between actions.
   def set_letter_of_credit

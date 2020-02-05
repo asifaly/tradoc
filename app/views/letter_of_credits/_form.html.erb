@@ -31,6 +31,12 @@
     <%= form.file_field :files, multiple: true, direct_upload: true, class: "form-control" %>
   </div>
 
+  <% if @letter_of_credit.files.attached? %>
+    <% @letter_of_credit.files.each do |fl| %>
+      <%= form.hidden_field :files, multiple: true, value: fl.signed_id %>
+    <% end %>
+  <% end %>
+
   <div class="flex flex-row flex-wrap bg-gray-300 p-4">
     <div class="w-full text-gray-700py-1">
       <p class="px-2 py-1 uppercase text-xs">Attachments</p>

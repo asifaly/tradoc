@@ -1,0 +1,19 @@
+<div class="bg-primary-800 p-4 text-lg">
+  <% if current_page?(new_letter_of_credit_path) %>
+    <span class="text-white">Upload New LC</span>
+  <% end %>
+  <% unless current_page?(new_letter_of_credit_path) %>
+    <span class="text-white uppercase"><%= @letter_of_credit.lc_number %></span>
+    <%= link_to letter_of_credit_path(@letter_of_credit), method: :delete, data: {confirm: 'LC and all associated data will be deleted, Are you sure?'} do %>
+      <i class="fas fa-trash-alt float-right mt-1 text-white hover:text-yellow-500 rotate"></i>
+    <% end %>
+  <% end %>
+  <% unless current_page?(new_letter_of_credit_path) || current_page?(edit_letter_of_credit_path) %>
+    <%= link_to edit_letter_of_credit_path(@letter_of_credit) do %>
+      <i class="fas fa-pencil-alt float-right mt-1 mr-4 text-white hover:text-yellow-500 rotate"></i>
+    <% end %>
+  <% end %>
+  <%= link_to letter_of_credits_path do %>
+    <i class="fas fa-window-close float-right mt-1 mr-4 text-white hover:text-yellow-500 rotate"></i>
+  <% end %>
+</div>

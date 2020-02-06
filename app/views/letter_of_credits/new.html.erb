@@ -3,12 +3,7 @@
   <div class="lg:w-10/12 w-full bg-gray-300">
 
     <div class="shadow-xl m-6">
-      <div class="bg-primary-800 p-4 text-lg">
-        <span class="text-white">Upload New LC</span>
-        <%= link_to letter_of_credits_path do %>
-          <i class="fas fa-window-close float-right mt-1 mr-4 text-white hover:text-yellow-500 rotate"></i>
-        <% end %>
-      </div>
+      <%= render 'actions' %>
       <div class="bg-white border-b border-gray-300 p-6">
       <%= render 'form', letter_of_credit: @letter_of_credit %>
       </div>

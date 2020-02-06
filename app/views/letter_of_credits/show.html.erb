@@ -3,18 +3,7 @@
   <div class="lg:w-10/12 w-full bg-gray-300">
 
     <div class="shadow-xl m-6">
-      <div class="bg-primary-800 p-4 text-lg">
-        <span class="text-white uppercase"><%= @letter_of_credit.lc_number %></span>
-        <%= link_to letter_of_credit_path(@letter_of_credit), method: :delete, data: {confirm: 'LC and all associated data will be deleted, Are you sure?'} do %>
-          <i class="fas fa-trash-alt float-right mt-1 text-white hover:text-yellow-500 rotate"></i>
-        <% end %>
-        <%= link_to edit_letter_of_credit_path(@letter_of_credit) do %>
-          <i class="fas fa-pencil-alt float-right mt-1 mr-4 text-white hover:text-yellow-500 rotate"></i>
-        <% end %>
-        <%= link_to letter_of_credits_path do %>
-          <i class="fas fa-window-close float-right mt-1 mr-4 text-white hover:text-yellow-500 rotate"></i>
-        <% end %>
-      </div>
+      <%= render 'actions' %>
       <div class="flex flex-row flex-wrap bg-white border-b border-gray-300 p-4">
         <div class="w-full text-gray-700 py-1">
           <span class="mx-2 uppercase text-xs">LC Number</span>

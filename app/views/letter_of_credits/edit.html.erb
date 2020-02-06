@@ -1,6 +1,11 @@
-<div class="container mx-auto my-8 px-4">
-  <div class="max-w-2xl mx-auto">
-    <div class="w-full shadow-xl">
+<div class="flex flex-wrap flex-row">
+  <div class="lg:w-2/12 w-full bg-primary-800">
+    <%= render partial: "shared/main_navbar" %>
+  </div>
+
+  <div class="lg:w-10/12 w-full bg-gray-300">
+
+    <div class="shadow-xl m-6">
       <div class="bg-primary-800 p-4 text-lg">
         <span class="text-white uppercase"><%= @letter_of_credit.lc_number %></span>
         <%= link_to letter_of_credit_path(@letter_of_credit), method: :delete, data: {confirm: 'LC and all associated data will be deleted, Are you sure?'} do %>

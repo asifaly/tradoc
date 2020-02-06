@@ -1,4 +1,5 @@
 <% #TODO fix the appearance of this section to appear as column in LG and row in MD and below %>
+<div class="lg:w-2/12 w-full bg-primary-800">
 <div class="text-white">
 
   <%= nav_link_to "Dashboard", edit_user_registration_path,   class: "block no-underline py-2 px-4", active_class: "bg-yellow-500 text-black hover:text-primary-800", inactive_class: "text-white hover:text-black hover:bg-yellow-500" %>
@@ -8,6 +9,7 @@
   <%= nav_link_to "Accounts", user_connected_accounts_path, class: "block no-underline py-2 px-4", active_class: "bg-yellow-500 text-black hover:text-primary-800", inactive_class: "text-white hover:text-black hover:bg-yellow-500" if Devise.omniauth_configs.any? %>
   <%= nav_link_to "Billing", subscription_path,             class: "block no-underline py-2 px-4", active_class: "bg-yellow-500 text-black hover:text-primary-800", inactive_class: "text-white hover:text-black hover:bg-yellow-500", starts_with: ["/subscription", "/card"] if Jumpstart.config.payments_enabled? %>
   <%= nav_link_to "Teams", teams_path,                      class: "block no-underline py-2 px-4", active_class: "bg-yellow-500 text-black hover:text-primary-800", inactive_class: "text-white hover:text-black hover:bg-yellow-500", starts_with: "/team" %>
+</div>
 </div>
 
 

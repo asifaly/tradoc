@@ -1,12 +1,18 @@
 <div class="container mx-auto my-8 px-4">
   <div class="max-w-2xl mx-auto">
-    <div class="flex justify-between items-center mb-4">
-      <h1 class="h3">Edit Letter Of Credit</h1>
-      <%= link_to 'Cancel', @letter_of_credit, class: "btn btn-link" %>
-    </div>
-
-    <div class="bg-white rounded shadow p-8">
-      <%= render 'form', letter_of_credit: @letter_of_credit %>
+    <div class="w-full shadow-xl">
+      <div class="bg-primary-800 p-4 text-lg">
+        <span class="text-white uppercase"><%= @letter_of_credit.lc_number %></span>
+        <%= link_to letter_of_credit_path(@letter_of_credit), method: :delete, data: {confirm: 'LC and all associated data will be deleted, Are you sure?'} do %>
+          <i class="fas fa-trash-alt float-right mt-1 text-white hover:text-yellow-500 rotate"></i>
+        <% end %>
+        <%= link_to letter_of_credits_path do %>
+          <i class="fas fa-window-close float-right mt-1 mr-4 text-white hover:text-yellow-500 rotate"></i>
+        <% end %>
+      </div>
+      <div class="bg-white border-b border-gray-300 p-6">
+        <%= render 'form', letter_of_credit: @letter_of_credit %>
+      </div>
     </div>
   </div>
 </div>

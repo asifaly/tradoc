@@ -42,7 +42,7 @@
       <% else %>
         <% letter_of_credit.files.each do |file| %>
           <%= link_to file, target: :blank do %>
-            <span><i class="fas fa-paperclip m-1 text-teal-500 hover:text-red-500"></i></span>
+            <span><i class="fas fa-paperclip m-1 text-teal-500 hover:text-red-500" data-tippy-content="<%= file.filename %>"></i></span>
           <% end %>
         <% end %>
       <% end %>

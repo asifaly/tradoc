@@ -1,11 +1,11 @@
 <div class="flex flex-wrap flex-row">
     <%= render partial: "shared/main_navbar" %>
-  <div class="lg:w-10/12 w-full bg-gray-300">
+  <div class="lg:w-10/12 md:w-12/12 w-full bg-gray-300">
     <div class="my-4">
       <% if @letter_of_credits.exists? %>
-        <div class="w-full lg:w-10/12 bg-primary-800 text-white p-2 mx-6 my-4">
-            <h2 class="font-thin">My Letter Of Credits</h2>
-        </div>
+        <!--        <div class="w-full lg:w-10/12 bg-primary-800 text-white p-2 mx-6 my-4">-->
+        <!--            <h2 class="font-thin">My Letter Of Credits</h2>-->
+        <!--        </div>-->
         <div class="flex flex-wrap">
           <% @letter_of_credits.each do |letter_of_credit| %>
             <%= render 'card', letter_of_credit: letter_of_credit %>
@@ -16,9 +16,8 @@
             </div>
           <% end %>
         </div>
-
       <% else %>
-        <div class="bg-white rounded shadow flex flex-col items-center justify-between p-8 lg:flex-row">
+        <div class="flex flex-col items-center justify-center p-8 lg:flex-row" style="height: 90vh;">
           <%= image_tag "empty.svg", class: "mb-4 lg:w-1/2" %>
           <div class="flex-1 text-center">
             <p class="h3 mb-4">Create your first Letter Of Credit</p>
@@ -26,10 +25,7 @@
           </div>
         </div>
       <% end %>
-    </div>
+      </div>
   </div>
 </div>
-
-
-
 

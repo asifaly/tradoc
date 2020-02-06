@@ -10,7 +10,8 @@ class LetterOfCreditsController < ApplicationController
   end
 
   # GET /letter_of_credits/1
-  def show; end
+  def show;
+  end
 
   # GET /letter_of_credits/new
   def new

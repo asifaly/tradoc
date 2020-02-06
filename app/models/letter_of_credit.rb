@@ -3,6 +3,8 @@ class LetterOfCredit < ApplicationRecord
   belongs_to :user
   belongs_to :team
 
+  validates_presence_of :client, :expiry_date, :lc_number, :files
+
   # validate :file_validation
   #
   # def file_validation

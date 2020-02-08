@@ -1,0 +1,3 @@
+$('.delete').bind('ajax:success', function(){
+    $('#lc-item<%= @letter_of_credit.id %>').fadeOut(800);
+})

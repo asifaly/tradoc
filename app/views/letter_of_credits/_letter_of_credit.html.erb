@@ -1,7 +1,7 @@
-<div class="lg:w-5/12 md:w-5/12 w-full mx-6 mb-4 shadow-sm hover:shadow-xl bg-white">
+<div class="lg:w-5/12 md:w-5/12 w-full mx-6 mb-4 shadow-sm hover:shadow-xl bg-white" id="lc-item<%= letter_of_credit.id %>">
   <div class="bg-primary-800 px-2 py-1 text-lg">
     <span class="text-white uppercase text-sm font-bold"><%= letter_of_credit.lc_number %></span>
-    <%= link_to letter_of_credit_path(letter_of_credit), method: :delete, data: {confirm: 'LC and all associated data will be deleted, Are you sure?'} do %>
+    <%= link_to letter_of_credit_path(letter_of_credit), remote: true, method: :delete, data: {confirm: 'LC and all associated data will be deleted, Are you sure?'}, class: 'delete' do %>
       <i class="fas fa-trash-alt float-right mt-1 text-white hover:text-yellow-500 rotate"></i>
     <% end %>
     <%= link_to edit_letter_of_credit_path(letter_of_credit) do %>

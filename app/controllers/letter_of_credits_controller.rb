@@ -57,7 +57,10 @@ class LetterOfCreditsController < ApplicationController
   # DELETE /letter_of_credits/1
   def destroy
     @letter_of_credit.destroy
-    redirect_to letter_of_credits_url, notice: 'Letter of credit was successfully destroyed.'
+    respond_to do |format|
+      format.js
+      format.html { redirect_to letter_of_credits_url, notice: 'Letter of credit was successfully destroyed.' }
+    end
   end
 
   def delete_file_attachment

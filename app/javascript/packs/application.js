@@ -75,6 +75,5 @@ document.addEventListener("turbolinks:render", () =>
       : "";
   }, 3000)
 );
-
 // Start Rails UJS
 Rails.start();

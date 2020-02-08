@@ -1,0 +1,4 @@
+document.querySelector("#lc-form").remove();
+document.querySelector("#new-lc-button").style.display = 'block';
+node = document.createRange().createContextualFragment("<%= j render @letter_of_credit %>");
+document.querySelector("#lc-list").append(node);

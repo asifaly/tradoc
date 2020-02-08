@@ -6,7 +6,7 @@ class LetterOfCredit < ApplicationRecord
   belongs_to :currency
   belongs_to :client
 
-  validates_presence_of :expiry_date, :lc_number, :files
+  validates_presence_of :expiry_date, :lc_number
 
   # validate :file_validation
   #

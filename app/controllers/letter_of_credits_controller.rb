@@ -17,6 +17,10 @@ class LetterOfCreditsController < ApplicationController
   # GET /letter_of_credits/new
   def new
     @letter_of_credit = LetterOfCredit.new
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   # GET /letter_of_credits/1/edit
@@ -30,11 +34,15 @@ class LetterOfCreditsController < ApplicationController
     @letter_of_credit.user = current_user
     @letter_of_credit.team = current_team
 
-    if @letter_of_credit.save
-      redirect_to letter_of_credits_url, notice: 'Letter of credit was successfully created.'
-    else
-      render :new
+    respond_to do |format|
+      if @letter_of_credit.save
+        format.js
+        format.html {redirect_to letter_of_credits_url, notice: 'Letter of credit was successfully created.'}
+      else
+        format.html {render :new}
+      end
     end
+
   end
 
   # PATCH/PUT /letter_of_credits/1

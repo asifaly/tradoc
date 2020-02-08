@@ -1,73 +1,9 @@
 <div class="flex flex-wrap flex-row">
   <%= render partial: "shared/main_navbar" %>
   <div class="lg:w-10/12 w-full bg-gray-300">
-
     <div class="shadow-xl m-6">
-      <%= render 'actions', letter_of_credit: @letter_of_credit  %>
-      <div class="flex flex-row flex-wrap bg-white border-b border-gray-300 p-4">
-        <div class="w-full text-gray-700 py-1">
-          <span class="mx-2 uppercase text-xs">LC Number</span>
-        </div>
-        <div class="text-sm py-1">
-          <span class="mx-2"><%= @letter_of_credit.lc_number %></span>
-        </div>
-      </div>
-      <div class="flex flex-row flex-wrap bg-white border-b border-gray-300 p-4">
-        <div class="w-full text-gray-700 py-1">
-          <span class="mx-2 uppercase text-xs">Expiry</span>
-        </div>
-        <div class="text-sm py-1">
-          <span class="mx-2"><%= @letter_of_credit.expiry_date.strftime("%d-%b-%Y") %></span>
-        </div>
-      </div>
-      <div class="flex flex-row flex-wrap bg-white border-b border-gray-300 p-4">
-        <div class="w-full text-gray-700 py-1">
-          <span class="mx-2 uppercase text-xs">Client</span>
-        </div>
-        <div class="text-sm py-1">
-          <span class="mx-2"><%= @letter_of_credit.client.name %></span>
-        </div>
-      </div>
-      <div class="flex flex-row flex-wrap bg-white border-b border-gray-300 p-4">
-        <div class="w-full text-gray-700 py-1">
-          <span class="mx-2 uppercase text-xs">Comment</span>
-        </div>
-        <div class="text-sm py-1">
-          <span class="mx-2"><%= @letter_of_credit.comment %></span>
-        </div>
-      </div>
-      <div class="flex flex-row flex-wrap bg-white border-b border-gray-300 p-4">
-        <div class="w-full text-gray-700 py-1">
-          <span class="mx-2 uppercase text-xs">User</span>
-        </div>
-        <div class="text-sm py-1">
-          <span class="mx-2"><%= @letter_of_credit.user.first_name %></span>
-        </div>
-      </div>
-      <div class="flex flex-row flex-wrap bg-white border-b border-gray-300 p-4">
-        <div class="w-full text-gray-700py-1">
-          <span class="mx-2 uppercase text-xs">Team</span>
-        </div>
-        <div class="text-sm py-1">
-          <span class="mx-2"><%= @letter_of_credit.team.name %></span>
-        </div>
-      </div>
-      <div class="flex flex-row flex-wrap bg-gray-300 p-4">
-        <div class="w-full text-gray-700py-1">
-          <p class="px-2 py-1 uppercase text-xs">Attachments</p>
-        </div>
-        <div class="text-sm py-1">
-          <% if @letter_of_credit.files.count == 0 %>
-            <span class="bg-white rounded-full p-1 m-2 text-sm"><%= @letter_of_credit.files.count %></span>
-          <% else %>
-            <% @letter_of_credit.files.each do |file| %>
-              <span class="mx-2"><%= link_to file.filename, file, target: :blank %></span>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
+      <%= render 'actions', letter_of_credit: @letter_of_credit %>
+      <%= render 'form', letter_of_credit: @letter_of_credit %>
     </div>
   </div>
-
-</div>
 </div>

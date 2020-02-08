@@ -63,6 +63,8 @@ class User < ApplicationRecord
   # Associations
   has_many :api_tokens, dependent: :destroy
   has_many :connected_accounts, dependent: :destroy
+  has_many :clients
+  has_many :letter_of_credits
 
   # We don't need users to confirm their email address on create,
   # just when they change it

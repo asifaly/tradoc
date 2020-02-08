@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_08_035017) do
+ActiveRecord::Schema.define(version: 2020_02_08_043804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,16 @@ ActiveRecord::Schema.define(version: 2020_02_08_035017) do
     t.index ["user_id"], name: "index_api_tokens_on_user_id"
   end
 
+  create_table "clients", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.bigint "team_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["team_id"], name: "index_clients_on_team_id"
+    t.index ["user_id"], name: "index_clients_on_user_id"
+  end
+
   create_table "currencies", force: :cascade do |t|
     t.string "code"
     t.string "name"
@@ -88,7 +98,6 @@ ActiveRecord::Schema.define(version: 2020_02_08_035017) do
   create_table "letter_of_credits", force: :cascade do |t|
     t.string "lc_number"
     t.date "expiry_date"
-    t.string "client"
     t.string "comment"
     t.bigint "user_id", null: false
     t.bigint "team_id", null: false
@@ -96,6 +105,8 @@ ActiveRecord::Schema.define(version: 2020_02_08_035017) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "currency_id", null: false
     t.integer "amount"
+    t.bigint "client_id", null: false
+    t.index ["client_id"], name: "index_letter_of_credits_on_client_id"
     t.index ["currency_id"], name: "index_letter_of_credits_on_currency_id"
     t.index ["team_id"], name: "index_letter_of_credits_on_team_id"
     t.index ["user_id"], name: "index_letter_of_credits_on_user_id"
@@ -235,6 +246,9 @@ ActiveRecord::Schema.define(version: 2020_02_08_035017) do
   end
 
   add_foreign_key "api_tokens", "users"
+  add_foreign_key "clients", "teams"
+  add_foreign_key "clients", "users"
+  add_foreign_key "letter_of_credits", "clients"
   add_foreign_key "letter_of_credits", "currencies"
   add_foreign_key "letter_of_credits", "teams"
   add_foreign_key "letter_of_credits", "users"

@@ -68,6 +68,6 @@ class LetterOfCreditsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def letter_of_credit_params
-    params.require(:letter_of_credit).permit(:lc_number, :expiry_date, :client, :comment, :user_id, :team_id, files: [])
+    params.require(:letter_of_credit).permit(:lc_number, :expiry_date, :currency_id, :client_id, :comment, :user_id, :team_id, files: [])
   end
 end

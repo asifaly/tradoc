@@ -3,7 +3,7 @@
   <div class="lg:w-10/12 w-full bg-gray-300">
 
     <div class="shadow-xl m-6">
-      <%= render 'actions' %>
+      <%= render 'actions', letter_of_credit: @letter_of_credit %>
       <div class="bg-white border-b border-gray-300 p-6">
         <%= render 'form', letter_of_credit: @letter_of_credit %>
       </div>

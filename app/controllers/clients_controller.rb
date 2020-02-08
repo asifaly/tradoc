@@ -3,8 +3,9 @@ class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
   # GET /clients
+  # TODO: better way to handle current_team.clients
   def index
-    @pagy, @clients = pagy(Client.all)
+    @pagy, @clients = pagy(current_team.clients)
   end
 
   # GET /clients/1

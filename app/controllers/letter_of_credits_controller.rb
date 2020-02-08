@@ -5,8 +5,9 @@ class LetterOfCreditsController < ApplicationController
   before_action :set_letter_of_credit, only: %i[show edit update destroy]
 
   # GET /letter_of_credits
+  # # TODO: better way to handle current_team.letter_of_credits
   def index
-    @pagy, @letter_of_credits = pagy(LetterOfCredit.all)
+    @pagy, @letter_of_credits = pagy(current_team.letter_of_credits)
   end
 
   # GET /letter_of_credits/1
@@ -68,6 +69,6 @@ class LetterOfCreditsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def letter_of_credit_params
-    params.require(:letter_of_credit).permit(:lc_number, :expiry_date, :currency_id, :client_id, :comment, :user_id, :team_id, files: [])
+    params.require(:letter_of_credit).permit(:lc_number, :expiry_date, :currency_id, :amount, :client_id, :comment, :user_id, :team_id, files: [])
   end
 end

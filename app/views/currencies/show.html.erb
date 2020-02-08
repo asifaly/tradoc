@@ -1,0 +1,23 @@
+<div class="container mx-auto my-8 px-4">
+  <div class="max-w-2xl mx-auto">
+    <div class="flex justify-between items-center mb-4">
+      <h1 class="h3"><%= link_to 'Currencies', currencies_path %> > Currency #<%= @currency.id %></h1>
+      <%= link_to 'Edit', edit_currency_path(@currency), class: "btn btn-link" %>
+    </div>
+
+    <div class="bg-white rounded shadow p-8">
+            <div class="mb-4">
+        <h5>Code</h5>
+        <%= @currency.code %>
+      </div>
+            <div class="mb-4">
+        <h5>Name</h5>
+        <%= @currency.name %>
+      </div>
+            <div class="mb-4">
+        <h5>Iso</h5>
+        <%= @currency.iso %>
+      </div>
+          </div>
+  </div>
+</div>

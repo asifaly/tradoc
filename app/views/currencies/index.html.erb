@@ -1,0 +1,53 @@
+<div class="container mx-auto my-8 px-4">
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="h3">Currencies</h1>
+
+    <% if @currencies.exists? %>
+      <%= link_to 'New Currency', new_currency_path, class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <% if @currencies.exists? %>
+    <div class="bg-white rounded shadow table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Code</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Name</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Iso</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700 w-20">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @currencies.each do |currency| %>
+          <tr class="group border-t border-gray-400 hover:bg-gray-100">
+                      <td class="p-3"><%= currency.code %></td>
+                      <td class="p-3"><%= currency.name %></td>
+                      <td class="p-3"><%= currency.iso %></td>
+          
+            <td>
+              <%= link_to "View", currency, class: "btn btn-link no-underline" %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <% if @pagy.pages > 1 %>
+      <div class="text-center my-6">
+        <%== pagy_nav(@pagy) %>
+      </div>
+    <% end %>
+
+  <% else %>
+    <div class="bg-white rounded shadow flex flex-col items-center justify-between p-8 lg:flex-row">
+      <%= image_tag "empty.svg", class: "mb-4 lg:w-1/2" %>
+      <div class="flex-1 text-center">
+        <p class="h3 mb-4">Create your first Currency</p>
+        <%= link_to 'New Currency', new_currency_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

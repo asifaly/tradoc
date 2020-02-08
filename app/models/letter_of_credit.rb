@@ -2,6 +2,7 @@ class LetterOfCredit < ApplicationRecord
   has_many_attached :files
   belongs_to :user
   belongs_to :team
+  belongs_to :currency
 
   validates_presence_of :client, :expiry_date, :lc_number, :files
 

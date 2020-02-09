@@ -17,10 +17,6 @@ class LetterOfCreditsController < ApplicationController
   # GET /letter_of_credits/new
   def new
     @letter_of_credit = LetterOfCredit.new
-    respond_to do |format|
-      format.js
-      format.html
-    end
   end
 
   # GET /letter_of_credits/1/edit
@@ -58,6 +54,7 @@ class LetterOfCreditsController < ApplicationController
     if @letter_of_credit.destroy
       @destroy_success = true
       flash.now[:notice] = I18n.t('flash.letter_of_credits.delete_success')
+      redirect_to letter_of_credits_url
     else
       flash.now[:alert] = I18n.t('flash.letter_of_credits.delete_failure')
     end

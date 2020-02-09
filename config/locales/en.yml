@@ -34,3 +34,11 @@ en:
   team_invitations_mailer:
     invite:
       subject: "%{inviter} invited you to %{team}"
+  flash:
+    letter_of_credits:
+      create_success: 'Letter of Credit Created Successfully'
+      delete_success: 'Letter of Credit Deleted Successfully'
+      delete_failure: 'Letter of Credit Deletion Failed'
+      create_failure: 'Letter of Credit Creation Failed'
+      update_success: 'Letter of Credit Updated Successfully'
+      update_failure: 'Letter of Credit Update Failed'

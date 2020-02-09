@@ -36,10 +36,12 @@ class LetterOfCreditsController < ApplicationController
 
     respond_to do |format|
       if @letter_of_credit.save
+        @save_success = true
+        flash.now[:notice] = I18n.t('flash.letter_of_credits.create_success')
         format.js
-        format.html {redirect_to letter_of_credits_url, notice: 'Letter of credit was successfully created.'}
       else
-        format.html {render :new}
+        flash.now[:notice] = I18n.t('flash.letter_of_credits.create_failure')
+        format.js
       end
     end
 
@@ -48,18 +50,25 @@ class LetterOfCreditsController < ApplicationController
   # PATCH/PUT /letter_of_credits/1
   def update
     if @letter_of_credit.update(letter_of_credit_params)
-      redirect_to session.delete(:return_to), notice: 'Letter of credit was successfully updated.'
+      flash[:notice] = I18n.t('flash.letter_of_credits.update_success')
+      redirect_to session.delete(:return_to)
     else
+      flash[:alert] = I18n.t('flash.letter_of_credits.update_failure')
       render :edit
     end
   end
 
   # DELETE /letter_of_credits/1
   def destroy
-    @letter_of_credit.destroy
-    respond_to do |format|
-      format.js
-      format.html { redirect_to letter_of_credits_url, notice: 'Letter of credit was successfully destroyed.' }
+    if @letter_of_credit.destroy
+      @destroy_success = true
+      flash.now[:notice] = I18n.t('flash.letter_of_credits.delete_success')
+      respond_to do |format|
+        format.js
+        format.html { redirect_to letter_of_credits_url }
+      end
+    else
+      flash.now[:alert] = I18n.t('flash.letter_of_credits.delete_failure')
     end
   end
 
@@ -71,7 +80,6 @@ class LetterOfCreditsController < ApplicationController
   end
 
   private
-
 
   # Use callbacks to share common setup or constraints between actions.
   def set_letter_of_credit

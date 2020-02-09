@@ -3,16 +3,15 @@
   <div class="lg:w-10/12 md:w-12/12 w-full bg-gray-300">
     <div class="my-4">
       <% if @letter_of_credits.exists? %>
-        <div class="w-full lg:w-10/12 p-2 mx-6 my-4 flex justify-end" id="new-lc-button">
-          <%= link_to 'Upload New LC', new_letter_of_credit_path, remote: true, class: "btn btn-primary" %>
+        <div class="flex justify-center items-center bg-primary-800 fixed bottom-0 right-0 m-8 h-16 w-16 rounded-full shadow-xl" id="new-lc-button">
+          <%= link_to new_letter_of_credit_path, remote: true, class: "text-5xl" do %>
+            <i class="fas fa-plus-circle text-white hover:text-yellow-500 rotate" data-tippy-content="Upload New LC"></i>
+          <% end %>
         </div>
         <div class="shadow-xl m-6" id="new-lc">
-
         </div>
         <div class="flex flex-wrap" id="lc-list">
-          <%# @letter_of_credits.each do |letter_of_credit| %>
-            <%= render @letter_of_credits %>
-          <%# end %>
+          <%= render @letter_of_credits %>
           <% if @pagy.pages > 1 %>
             <div class="text-center my-6">
               <%== pagy_nav(@pagy) %>

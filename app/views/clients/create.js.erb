@@ -1,0 +1,16 @@
+<% if @save_success %>
+$("#client-form").remove();
+$("#new-title").remove();
+$("#new-client-button").show();
+$("#client-list").append("<%= j render @client %>").fadeIn("slow");
+$("#flash-section").html('<%= j render partial: "shared/flash", locals: { notice: flash.now[:notice] } %>')
+$("#notice").fadeOut(5000, function () {
+    $(this).remove();
+});
+<% else %>
+$("#flash-section").html('<%= j render partial: "shared/flash", locals: { alert: flash.now[:alert] } %>')
+$("#alert").fadeOut(5000, function () {
+    $(this).remove();
+});
+<% end %>
+

@@ -4,7 +4,7 @@
   <% end %>
   <% unless current_page?(new_letter_of_credit_path) %>
     <span class="text-white uppercase"><%= letter_of_credit.lc_number %></span>
-    <%= link_to letter_of_credit_path(letter_of_credit), method: :delete, data: {confirm: 'LC and all associated data will be deleted, Are you sure?'} do %>
+    <%= link_to letter_of_credit_path(letter_of_credit), method: :delete, remote: true, data: {confirm: 'LC and all associated data will be deleted, Are you sure?'} do %>
       <i class="fas fa-trash-alt float-right mt-1 text-white hover:text-yellow-500 rotate" data-tippy-content="Delete"></i>
     <% end %>
   <% end %>
@@ -14,6 +14,6 @@
     <% end %>
   <% end %>
   <%= link_to letter_of_credits_path do %>
-    <i class="fas fa-window-close float-right mt-1 mr-4 text-white hover:text-yellow-500 rotate" data-tippy-content="Show"></i>
+    <i class="fas fa-window-close float-right mt-1 mr-4 text-white hover:text-yellow-500 rotate" data-tippy-content="Back"></i>
   <% end %>
 </div>

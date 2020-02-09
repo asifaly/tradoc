@@ -34,17 +34,12 @@ class LetterOfCreditsController < ApplicationController
     @letter_of_credit.user = current_user
     @letter_of_credit.team = current_team
 
-    respond_to do |format|
-      if @letter_of_credit.save
-        @save_success = true
-        flash.now[:notice] = I18n.t('flash.letter_of_credits.create_success')
-        format.js
-      else
-        flash.now[:notice] = I18n.t('flash.letter_of_credits.create_failure')
-        format.js
-      end
+    if @letter_of_credit.save
+      @save_success = true
+      flash.now[:notice] = I18n.t('flash.letter_of_credits.create_success')
+    else
+      flash.now[:notice] = I18n.t('flash.letter_of_credits.create_failure')
     end
-
   end
 
   # PATCH/PUT /letter_of_credits/1

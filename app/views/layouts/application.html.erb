@@ -31,9 +31,12 @@
 
   <body class="font-sans font-normal leading-normal w-full antialiased">
     <div class="main">
-      <%= render partial: "shared/flash" %>
+      <div id="flash-section">
+        <% if notice.present? || alert.present? %>
+          <%= render partial: "shared/flash" %>
+        <% end %>
+      </div>
       <%= render partial: "shared/navbar" %>
-
       <div>
         <%= yield %>
       </div>

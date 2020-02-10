@@ -1,47 +1,46 @@
 <!DOCTYPE html>
 <html class="h-full antialiased">
-  <head>
-    <title>
-      <% if content_for?(:title) %>
-        <%= yield :title %> |
-      <% end %>
-      <%= Jumpstart.config.application_name %>
-    </title>
+<head>
+  <title>
+    <% if content_for?(:title) %>
+      <%= yield :title %> |
+    <% end %>
+    <%= Jumpstart.config.application_name %>
+  </title>
 
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <%# All assets are defined in Webpacker app/javascripts now %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%# All assets are defined in Webpacker app/javascripts now %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-    <%# Be sure to add your own custom favicons %>
-    <%= render "shared/favicons" %>
-    <%= render "shared/payments_dependencies" %>
+  <%# Be sure to add your own custom favicons %>
+  <%= render "shared/favicons" %>
+  <%= render "shared/payments_dependencies" %>
 
-    <%# Replace this with your FontAwesome Pro Kit code %>
-    <script src="https://kit.fontawesome.com/0e5ab6a736.js"></script>
+  <%# Replace this with your FontAwesome Pro Kit code %>
+  <script src="https://kit.fontawesome.com/0e5ab6a736.js"></script>
 
-<!--    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,900&display=swap" rel="stylesheet">-->
+  <!--    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,900&display=swap" rel="stylesheet">-->
 
-    <%= yield :head %>
-  </head>
+  <%= yield :head %>
+</head>
 
-  <body class="font-sans font-normal leading-normal w-full antialiased">
-    <div class="main">
-      <div id="flash-section">
-        <% if notice.present? || alert.present? %>
-          <%= render partial: "shared/flash" %>
-        <% end %>
-      </div>
-      <%= render partial: "shared/navbar" %>
-      <div>
-        <%= yield %>
-      </div>
-    </div>
-
-    <%= render partial: "shared/footer" %>
-  </body>
+<body class="font-sans font-normal leading-normal w-full antialiased">
+<div class="main">
+  <div id="flash-section">
+    <% if notice.present? || alert.present? %>
+      <%= render partial: "shared/flash" %>
+    <% end %>
+  </div>
+  <%= render partial: "shared/navbar" %>
+  <div>
+    <%= yield %>
+  </div>
+</div>
+<%= render partial: "shared/footer" %>
+</body>
 </html>

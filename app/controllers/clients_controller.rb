@@ -28,7 +28,8 @@ class ClientsController < ApplicationController
     @client.team = current_team
 
     if @client.save
-      redirect_to @client, notice: 'Client was successfully created.'
+      @save_success = true
+      flash.now[:notice] = I18n.t('flash.letter_of_credits.create_success')
     else
       render :new
     end
@@ -45,18 +46,24 @@ class ClientsController < ApplicationController
 
   # DELETE /clients/1
   def destroy
-    @client.destroy
-    redirect_to clients_url, notice: 'Client was successfully destroyed.'
+    if @client.destroy
+      @destroy_success = true
+      flash.now[:notice] = I18n.t('flash.clients.delete_success')
+      redirect_to action: :index, status: 303
+    else
+      flash.now[:alert] = I18n.t('flash.clients.delete_failure')
+    end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_client
-      @client = Client.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def client_params
-      params.require(:client).permit(:name, :user_id, :team_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_client
+    @client = Client.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def client_params
+    params.require(:client).permit(:name, :user_id, :team_id)
+  end
 end

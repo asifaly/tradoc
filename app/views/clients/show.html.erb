@@ -1,23 +1,9 @@
-<div class="container mx-auto my-8 px-4">
-  <div class="max-w-2xl mx-auto">
-    <div class="flex justify-between items-center mb-4">
-      <h1 class="h3"><%= link_to 'Clients', clients_path %> > Client #<%= @client.id %></h1>
-      <%= link_to 'Edit', edit_client_path(@client), class: "btn btn-link" %>
+<div class="flex flex-wrap flex-row">
+  <%= render partial: "shared/main_navbar" %>
+  <div class="lg:w-10/12 w-full bg-gray-300">
+    <div class="shadow-xl m-6" data-controller="input">
+      <%= render 'actions', client: @client %>
+      <%= render 'form', client: @client %>
     </div>
-
-    <div class="bg-white rounded shadow p-8">
-            <div class="mb-4">
-        <h5>Name</h5>
-        <%= @client.name %>
-      </div>
-            <div class="mb-4">
-        <h5>User</h5>
-        <%= @client.user %>
-      </div>
-            <div class="mb-4">
-        <h5>Team</h5>
-        <%= @client.team %>
-      </div>
-          </div>
   </div>
 </div>

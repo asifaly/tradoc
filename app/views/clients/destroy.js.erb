@@ -1,5 +1,5 @@
 <% if @destroy_success %>
-$('.delete').bind('ajax:success', function(){
+$('.delete').bind('ajax:success', function () {
     $('#client-item<%= @client.id %>').fadeOut(800);
 })
 $("#flash-section").html('<%= j render partial: "shared/flash", locals: { notice: flash.now[:notice] } %>');

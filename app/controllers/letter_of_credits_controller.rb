@@ -54,7 +54,7 @@ class LetterOfCreditsController < ApplicationController
     if @letter_of_credit.destroy
       @destroy_success = true
       flash.now[:notice] = I18n.t('flash.letter_of_credits.delete_success')
-      redirect_to :action => :index, status: 303
+      redirect_to action: :index, status: 303
     else
       flash.now[:alert] = I18n.t('flash.letter_of_credits.delete_failure')
     end

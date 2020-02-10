@@ -49,7 +49,7 @@ class ClientsController < ApplicationController
     if @client.destroy
       @destroy_success = true
       flash.now[:notice] = I18n.t('flash.clients.delete_success')
-      redirect_to :action => :index, status: 303
+      redirect_to action: :index, status: 303
     else
       flash.now[:alert] = I18n.t('flash.clients.delete_failure')
     end

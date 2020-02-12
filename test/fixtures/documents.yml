@@ -1,0 +1,35 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  letter_of_credit: one
+  issue_date: 2020-02-12
+  shipment_date: 2020-02-12
+  incoterm: one
+  exw_amount: 1
+  fob_amount: 1
+  freight_amount: 1
+  total_amount: 1
+  place_of_receipt: MyString
+  port_of_loading: MyString
+  port_of_discharge: MyString
+  final_destination: MyString
+  issuing_bank: MyString
+  user: one
+  team: one
+
+two:
+  letter_of_credit: two
+  issue_date: 2020-02-12
+  shipment_date: 2020-02-12
+  incoterm: two
+  exw_amount: 1
+  fob_amount: 1
+  freight_amount: 1
+  total_amount: 1
+  place_of_receipt: MyString
+  port_of_loading: MyString
+  port_of_discharge: MyString
+  final_destination: MyString
+  issuing_bank: MyString
+  user: two
+  team: two

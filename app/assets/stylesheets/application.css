@@ -45,3 +45,6 @@
     -moz-transform: rotateZ(360deg);
     transform: rotateZ(360deg);
 }
+.trixdisable{
+    pointer-events: none;
+}

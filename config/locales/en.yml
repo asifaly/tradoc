@@ -42,10 +42,10 @@ en:
       create_failure: 'Letter of Credit Creation Failed'
       update_success: 'Letter of Credit Updated Successfully'
       update_failure: 'Letter of Credit Update Failed'
-    clients:
-      create_success: 'Client Created Successfully'
-      delete_success: 'Client Deleted Successfully'
-      delete_failure: 'Client Deletion Failed'
-      create_failure: 'Client Creation Failed'
-      update_success: 'Client Updated Successfully'
-      update_failure: 'Client Update Failed'
+    documents:
+      create_success: 'Document Created Successfully'
+      delete_success: 'Document Deleted Successfully'
+      delete_failure: 'Document Deletion Failed'
+      create_failure: 'Document Creation Failed'
+      update_success: 'Document Updated Successfully'
+      update_failure: 'Document Update Failed'

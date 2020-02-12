@@ -1,0 +1,70 @@
+<div class="lg:w-5/12 md:w-5/12 w-full mx-6 mb-4 shadow-sm hover:shadow-xl bg-white" id="document-item<%= document.id %>">
+  <div class="px-2 py-1 text-lg bg-blue-400">
+    <span class="text-blue-800 uppercase text-sm font-bold">Document - LC No - <%= document.letter_of_credit.lc_number %></span>
+    <%= link_to document_path(document), remote: true, method: :delete, data: {confirm: 'LC and all associated data will be deleted, Are you sure?'}, class: 'delete' do %>
+      <i class="fas fa-trash-alt float-right mt-1 text-blue-800 hover:text-white rotate"></i>
+    <% end %>
+    <%= link_to edit_document_path(document) do %>
+      <i class="fas fa-pencil-alt float-right mt-1 mr-4 text-blue-800 hover:text-white rotate"></i>
+    <% end %>
+    <%= link_to document_path(document) do %>
+      <i class="fas fa-search-plus float-right mt-1 mr-4 text-blue-800 hover:text-white rotate"></i>
+    <% end %>
+  </div>
+  <div class="flex flex-row flex-wrap border-b border-gray-300">
+    <div class="w-1/2 text-gray-700 text-sm py-1">
+      <span class="mx-2 uppercase text-xs">LC Number</span>
+    </div>
+    <div class="w-1/2 text-sm py-1">
+      <span class="mx-2"><%= document.letter_of_credit.lc_number %></span>
+    </div>
+  </div>
+  <div class="flex flex-row flex-wrap border-b border-gray-300">
+    <div class="w-1/2 text-gray-700 text-sm py-1">
+      <span class="mx-2 uppercase text-xs">Document Date</span>
+    </div>
+    <div class="w-1/2 text-sm py-1">
+      <span class="mx-2"><%= document.issue_date.strftime("%d-%b-%Y") %></span>
+    </div>
+  </div>
+  <div class="flex flex-row flex-wrap border-b border-gray-300">
+    <div class="w-1/2 text-gray-700 text-sm py-1">
+      <span class="mx-2 uppercase text-xs">Shipment Date</span>
+    </div>
+    <div class="w-1/2 text-sm py-1">
+      <span class="mx-2"><%= document.shipment_date.strftime("%d-%b-%Y") %></span>
+    </div>
+  </div>
+  <div class="flex flex-row flex-wrap border-b border-gray-300">
+    <div class="w-1/2 text-gray-700 text-sm py-1">
+      <span class="mx-2 uppercase text-xs">Total Amount</span>
+    </div>
+    <div class="w-1/2 text-sm py-1">
+      <span class="mx-2"><%= document.currency.code %> <%= document.total_amount %></span>
+    </div>
+  </div>
+  <div class="flex flex-row flex-wrap border-b border-gray-300">
+    <div class="w-1/2 text-gray-700 text-sm py-1">
+      <span class="mx-2 uppercase text-xs">Incoterm</span>
+    </div>
+    <div class="w-1/2 text-sm py-1">
+      <span class="mx-2"><%= document.incoterm.code %></span>
+    </div>
+  </div>
+  <div class="flex flex-row flex-wrap border-b border-gray-300">
+    <div class="w-1/2 text-gray-700 text-sm py-1">
+      <span class="mx-2 uppercase text-xs">Port Of Loading</span>
+    </div>
+    <div class="w-1/2 text-sm py-1">
+      <span class="mx-2"><%= document.port_of_loading %></span>
+    </div>
+  </div>
+  <div class="flex flex-row flex-wrap border-b border-gray-300">
+    <div class="w-1/2 text-gray-700 text-sm py-1">
+      <span class="mx-2 uppercase text-xs">Port Of Discharge</span>
+    </div>
+    <div class="w-1/2 text-sm py-1">
+      <span class="mx-2"><%= document.port_of_discharge %></span>
+    </div>
+  </div>
+</div>

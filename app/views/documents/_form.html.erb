@@ -1,0 +1,103 @@
+<% if current_page?(new_document_path) %>
+  <div class="bg-primary-800 p-4 text-lg" id="document-title">
+    <span class="text-white">Upload New Document</span>
+    <%= link_to documents_path do %>
+      <i class="fas fa-window-close float-right mt-1 mr-4 text-white hover:text-yellow-500 rotate" data-tippy-content="Close"></i>
+    <% end %>
+  </div>
+<% end %>
+<div class="bg-white border-b border-gray-300 p-6" id="document-form">
+  <%= form_with(model: document) do |form| %>
+    <%= render "shared/error_messages", resource: form.object %>
+
+    <div class="flex flex-row flex-wrap" id="disable-input" data-target="input.disable">
+      <div class="form-group w-full lg:w-1/5 md:w-1/4 sm:w-1/2 mr-4 flex-grow disable-input">
+        <%= form.label :letter_of_credit_id %>
+        <%= collection_select(:document, :letter_of_credit_id, LetterOfCredit.all, :id, :lc_number, {}, {class: "form-control"}) %>
+      </div>
+
+      <div class="form-group w-full lg:w-1/5 md:w-1/4 sm:w-1/2 mr-4 flex-grow">
+        <%= form.label :issuing_bank %>
+        <%= form.text_field :issuing_bank, class: "form-control" %>
+      </div>
+
+      <div class="form-group w-full lg:w-1/5 md:w-1/4 sm:w-1/2 mr-4 flex-grow">
+        <%= form.label :issue_date %>
+        <%= form.text_field :issue_date,
+                            data: {
+                                controller: "flatpickr",
+                                flatpickr_alt_format: t("date.formats.long"),
+                                flatpickr_alt_input: true,
+                            }, class: "form-control" %>
+      </div>
+
+      <div class="form-group w-full lg:w-1/5 md:w-1/4 sm:w-1/2 mr-4 flex-grow">
+        <%= form.label :shipment_date %>
+        <%= form.text_field :shipment_date,
+                            data: {
+                                controller: "flatpickr",
+                                flatpickr_alt_format: t("date.formats.long"),
+                                flatpickr_alt_input: true,
+                            }, class: "form-control" %>
+      </div>
+
+      <div class="form-group w-full lg:w-1/5 md:w-1/4 sm:w-1/2 mr-4 flex-grow">
+        <%= form.label :currency_id %>
+        <%= collection_select(:document, :currency_id, Currency.all, :id, :code, {}, {class: "form-control"}) %>
+      </div>
+
+      <div class="form-group w-full lg:w-1/5 md:w-1/4 sm:w-1/2 mr-4 flex-grow">
+        <%= form.label :incoterm_id %>
+        <%= collection_select(:document, :incoterm_id, Incoterm.all, :id, :code, {}, {class: "form-control"}) %>
+      </div>
+
+      <div class="form-group w-full lg:w-1/5 md:w-1/4 sm:w-1/2 mr-4 flex-grow">
+        <%= form.label :exw_amount %>
+        <%= form.number_field :exw_amount, class: "form-control" %>
+      </div>
+
+      <div class="form-group w-full lg:w-1/5 md:w-1/4 sm:w-1/2 mr-4 flex-grow">
+        <%= form.label :fob_amount %>
+        <%= form.number_field :fob_amount, class: "form-control" %>
+      </div>
+
+      <div class="form-group w-full lg:w-1/5 md:w-1/4 sm:w-1/2 mr-4 flex-grow">
+        <%= form.label :total_amount %>
+        <%= form.number_field :total_amount, class: "form-control" %>
+      </div>
+
+      <div class="form-group w-full lg:w-1/5 md:w-1/4 sm:w-1/2 mr-4 flex-grow">
+        <%= form.label :place_of_receipt %>
+        <%= form.text_field :place_of_receipt, class: "form-control" %>
+      </div>
+
+      <div class="form-group w-full lg:w-1/5 md:w-1/4 sm:w-1/2 mr-4 flex-grow">
+        <%= form.label :port_of_loading %>
+        <%= form.text_field :port_of_loading, class: "form-control" %>
+      </div>
+
+      <div class="form-group w-full lg:w-1/5 md:w-1/4 sm:w-1/2 mr-4 flex-grow">
+        <%= form.label :port_of_discharge %>
+        <%= form.text_field :port_of_discharge, class: "form-control" %>
+      </div>
+
+      <div class="form-group w-full lg:w-1/5 md:w-1/4 sm:w-1/2 mr-4 flex-grow">
+        <%= form.label :final_destination %>
+        <%= form.text_field :final_destination, class: "form-control" %>
+      </div>
+
+      <div class="form-group w-full mr-4 flex-grow">
+        <%= form.label :goods_description %>
+        <%= form.rich_text_area :goods_description %>
+      </div>
+    </div>
+    <%# unless current_page? document_path %>
+      <div class="form-group w-full flex justify-between mt-4">
+        <%= form.button class: "btn btn-primary w-" %>
+        <% if form.object.persisted? %>
+          <%= link_to 'Delete', form.object, class: "btn btn-danger outline", method: :delete, remote: true, data: {confirm: "Are you sure?"} %>
+          </div>
+        <% end %>
+    <%# end %>
+  <% end %>
+</div>

@@ -33,7 +33,7 @@ class Team < ApplicationRecord
   has_many :team_invitations, dependent: :destroy
   has_many :team_members, dependent: :destroy
   has_many :users, through: :team_members
-  has_many :clients, dependent: :destroy
+  has_many :documents, dependent: :destroy
   has_many :letter_of_credits, dependent: :destroy
 
   scope :personal, ->{ where(personal: true) }

@@ -1,0 +1,14 @@
+<% if @destroy_success %>
+$('.delete').bind('ajax:success', function(){
+    $('#document-item<%= @document.id %>').fadeOut(800);
+})
+$("#flash-section").html('<%= j render partial: "shared/flash", locals: { notice: flash.now[:notice] } %>');
+$("#notice").fadeOut(5000, function () {
+    $(this).remove();
+});
+<% else %>
+$("#flash-section").html('<%= j render partial: "shared/flash", locals: { alert: flash.now[:alert] } %>');
+$("#alert").remove().fadeOut(5000, function () {
+    $(this).remove();
+});
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_12_171331) do
+ActiveRecord::Schema.define(version: 2020_02_12_175425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,32 @@ ActiveRecord::Schema.define(version: 2020_02_12_171331) do
     t.integer "iso"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.bigint "letter_of_credit_id", null: false
+    t.date "issue_date"
+    t.date "shipment_date"
+    t.bigint "incoterm_id", null: false
+    t.integer "exw_amount"
+    t.integer "fob_amount"
+    t.integer "freight_amount"
+    t.integer "total_amount"
+    t.string "place_of_receipt"
+    t.string "port_of_loading"
+    t.string "port_of_discharge"
+    t.string "final_destination"
+    t.string "issuing_bank"
+    t.bigint "user_id", null: false
+    t.bigint "team_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "currency_id", null: false
+    t.index ["currency_id"], name: "index_documents_on_currency_id"
+    t.index ["incoterm_id"], name: "index_documents_on_incoterm_id"
+    t.index ["letter_of_credit_id"], name: "index_documents_on_letter_of_credit_id"
+    t.index ["team_id"], name: "index_documents_on_team_id"
+    t.index ["user_id"], name: "index_documents_on_user_id"
   end
 
   create_table "incoterms", force: :cascade do |t|
@@ -242,6 +268,11 @@ ActiveRecord::Schema.define(version: 2020_02_12_171331) do
   end
 
   add_foreign_key "api_tokens", "users"
+  add_foreign_key "documents", "currencies"
+  add_foreign_key "documents", "incoterms"
+  add_foreign_key "documents", "letter_of_credits"
+  add_foreign_key "documents", "teams"
+  add_foreign_key "documents", "users"
   add_foreign_key "letter_of_credits", "currencies"
   add_foreign_key "letter_of_credits", "teams"
   add_foreign_key "letter_of_credits", "users"

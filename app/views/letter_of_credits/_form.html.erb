@@ -37,13 +37,6 @@
       </div>
 
       <div class="form-group w-full lg:w-1/5 md:w-1/4 sm:w-1/2 mr-4 flex-grow">
-        <%= form.label :client_id %>
-        <%= collection_select(:letter_of_credit, :client_id, current_team.clients, :id, :name, {}, {class: "form-control"}) %>
-      </div>
-
-      <div id="new-client"></div>
-
-      <div class="form-group w-full lg:w-1/5 md:w-1/4 sm:w-1/2 mr-4 flex-grow">
         <%= form.label :comment %>
         <%= form.text_field :comment, class: "form-control" %>
       </div>

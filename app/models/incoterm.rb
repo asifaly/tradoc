@@ -1,0 +1,2 @@
+class Incoterm < ApplicationRecord
+end

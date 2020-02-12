@@ -1,6 +1,7 @@
  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
 
+  resources :incoterms
   # Jumpstart views
   if Rails.env.development? || Rails.env.test?
     mount Jumpstart::Engine, at: '/jumpstart'
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   # Administrate
   authenticated :user, lambda { |u| u.admin? } do
     namespace :admin do
+      resources :incoterms
       resources :currencies
       if defined?(Sidekiq)
         require 'sidekiq/web'

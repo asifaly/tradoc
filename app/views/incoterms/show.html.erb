@@ -1,0 +1,19 @@
+<div class="container mx-auto my-8 px-4">
+  <div class="max-w-2xl mx-auto">
+    <div class="flex justify-between items-center mb-4">
+      <h1 class="h3"><%= link_to 'Incoterms', incoterms_path %> > Incoterm #<%= @incoterm.id %></h1>
+      <%= link_to 'Edit', edit_incoterm_path(@incoterm), class: "btn btn-link" %>
+    </div>
+
+    <div class="bg-white rounded shadow p-8">
+            <div class="mb-4">
+        <h5>Code</h5>
+        <%= @incoterm.code %>
+      </div>
+            <div class="mb-4">
+        <h5>Description</h5>
+        <%= @incoterm.description %>
+      </div>
+          </div>
+  </div>
+</div>

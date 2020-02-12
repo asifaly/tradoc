@@ -42,7 +42,7 @@ class LetterOfCreditsController < ApplicationController
   def update
     if @letter_of_credit.update(letter_of_credit_params)
       flash[:notice] = I18n.t('flash.letter_of_credits.update_success')
-      redirect_to session.delete(:return_to)
+      redirect_to @letter_of_credit
     else
       flash[:alert] = I18n.t('flash.letter_of_credits.update_failure')
       render :edit
@@ -76,6 +76,6 @@ class LetterOfCreditsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def letter_of_credit_params
-    params.require(:letter_of_credit).permit(:lc_number, :expiry_date, :currency_id, :amount, :client_id, :comment, :user_id, :team_id, files: [])
+    params.require(:letter_of_credit).permit(:lc_number, :expiry_date, :currency_id, :amount, :comment, :user_id, :team_id, files: [])
   end
 end

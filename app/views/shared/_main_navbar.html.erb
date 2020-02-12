@@ -1,8 +1,8 @@
 <% #TODO fix the appearance of this section to appear as column in LG and row in MD and below %>
-<div class="lg:w-2/12 w-full bg-primary-800 flex-row flex-wrap">
-<div class="text-white sm:text-sm xs:text-xs text-lg">
+<div class="lg:w-2/12 w-full bg-blue-400 flex-row flex-wrap">
+  <div class="text-white sm:text-sm xs:text-xs text-lg">
 
-  <%= nav_link_to "Dashboard", edit_user_registration_path,   class: "lg:flex md:inline-flex no-underline py-2 px-4", active_class: "bg-yellow-500 text-black hover:text-primary-800", inactive_class: "text-white hover:text-black hover:bg-yellow-500" %>
+    <%= nav_link_to "Dashboard", edit_user_registration_path,   class: "lg:flex md:inline-flex no-underline py-2 px-4", active_class: "bg-yellow-500 text-black hover:text-primary-800", inactive_class: "text-white hover:text-black hover:bg-yellow-500" %>
   <%= nav_link_to "My Letters of Credit", letter_of_credits_path,   class: "lg:flex md:inline-flex no-underline py-2 px-4", active_class: "bg-yellow-500 text-black hover:text-primary-800", inactive_class: "text-white hover:text-black hover:bg-yellow-500" %>
   <%= nav_link_to "Profile", edit_user_registration_path,   class: "lg:flex md:inline-flex no-underline py-2 px-4", active_class: "bg-yellow-500 text-black hover:text-primary-800", inactive_class: "text-white hover:text-black hover:bg-yellow-500" %>
   <%= nav_link_to "Password", edit_account_password_path,   class: "lg:flex md:inline-flex no-underline py-2 px-4", active_class: "bg-yellow-500 text-black hover:text-primary-800", inactive_class: "text-white hover:text-black hover:bg-yellow-500" %>

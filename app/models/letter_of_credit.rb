@@ -1,12 +1,10 @@
 class LetterOfCredit < ApplicationRecord
-  self.ignored_columns = ["client"]
   has_many_attached :files
   belongs_to :user
   belongs_to :team
   belongs_to :currency
-  belongs_to :client
 
-  validates_presence_of :expiry_date, :lc_number
+  validates_presence_of :lc_number
 
   # validate :file_validation
   #

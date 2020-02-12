@@ -42,7 +42,7 @@ class LetterOfCreditsController < ApplicationController
   def update
     if @letter_of_credit.update(letter_of_credit_params)
       flash[:notice] = I18n.t('flash.letter_of_credits.update_success')
-      redirect_to session.delete(:return_to)
+      redirect_to @letter_of_credit
     else
       flash[:alert] = I18n.t('flash.letter_of_credits.update_failure')
       render :edit

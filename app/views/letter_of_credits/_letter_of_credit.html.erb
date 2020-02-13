@@ -13,7 +13,7 @@
   </div>
   <div class="flex flex-row flex-wrap border-b border-gray-300">
     <div class="w-1/3 text-gray-700 text-sm py-1">
-      <span class="mx-2">Expiry</span>
+      <span class="mx-2 uppercase text-xs">Expiry</span>
     </div>
     <div class="w-2/3 text-sm py-1">
       <span class="mx-2"><%= letter_of_credit.expiry_date.strftime("%d-%b-%Y") %></span>
@@ -21,7 +21,7 @@
   </div>
   <div class="flex flex-row flex-wrap border-b border-gray-300">
     <div class="w-1/3 text-gray-700 text-sm py-1">
-      <span class="mx-2">Amount</span>
+      <span class="mx-2 uppercase text-xs">Amount</span>
     </div>
     <div class="w-2/3 text-sm py-1">
       <span class="mx-2"><%= letter_of_credit.currency.code %> <%= letter_of_credit.amount %></span>
@@ -29,14 +29,14 @@
   </div>
   <div class="flex flex-row flex-wrap border-b border-gray-300">
     <div class="w-1/3 text-gray-700 text-sm py-1" style="height: 15vh">
-      <span class="mx-2">Comment</span>
+      <span class="mx-2 uppercase text-xs">Comment</span>
     </div>
     <div class="w-2/3 text-sm py-1" style="height: 15vh; overflow-y: scroll">
       <span class="mx-2"><%= letter_of_credit.comment %></span>
     </div>
   </div>
   <div class="flex flex-row flex-wrap text-sm">
-    <p class="px-2 py-1">Attachments
+    <p class="px-2 py-1 uppercase text-xs text-gray-700">Attachments
       <% if letter_of_credit.files.count == 0 %>
         <span class="bg-white rounded-full p-1 m-2"><%= letter_of_credit.files.count %></span>
       <% else %>

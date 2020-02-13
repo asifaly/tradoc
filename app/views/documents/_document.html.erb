@@ -1,14 +1,14 @@
 <div class="lg:w-5/12 md:w-5/12 w-full mx-6 mb-4 shadow-sm hover:shadow-xl bg-white" id="document-item<%= document.id %>">
-  <div class="px-2 py-1 text-lg bg-blue-400">
-    <span class="text-blue-800 uppercase text-sm font-bold">Document - LC No - <%= document.letter_of_credit.lc_number %></span>
+  <div class="px-2 py-1 text-lg bg-primary-800">
+    <span class="text-white uppercase text-sm font-bold">Document - LC No - <%= document.letter_of_credit.lc_number %></span>
     <%= link_to document_path(document), remote: true, method: :delete, data: {confirm: 'LC and all associated data will be deleted, Are you sure?'}, class: 'delete' do %>
-      <i class="fas fa-trash-alt float-right mt-1 text-blue-800 hover:text-white rotate"></i>
+      <i class="fas fa-trash-alt float-right mt-1 text-white hover:text-yellow-500 rotate"></i>
     <% end %>
     <%= link_to edit_document_path(document) do %>
-      <i class="fas fa-pencil-alt float-right mt-1 mr-4 text-blue-800 hover:text-white rotate"></i>
+      <i class="fas fa-pencil-alt float-right mt-1 mr-4 text-white hover:text-yellow-500 rotate"></i>
     <% end %>
     <%= link_to document_path(document) do %>
-      <i class="fas fa-search-plus float-right mt-1 mr-4 text-blue-800 hover:text-white rotate"></i>
+      <i class="fas fa-search-plus float-right mt-1 mr-4 text-white hover:text-yellow-500 rotate"></i>
     <% end %>
   </div>
   <div class="flex flex-row flex-wrap border-b border-gray-300">

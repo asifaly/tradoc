@@ -58,6 +58,7 @@ Rails.application.routes.draw do
       delete :delete_file_attachment
     end
   end
+  resources :search, only: :index
   resources :announcements, only: [:index]
   resources :api_tokens
   resources :teams do

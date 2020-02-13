@@ -11,10 +11,17 @@
     <%= render "shared/error_messages", resource: form.object %>
 
     <div class="flex flex-row flex-wrap" id="disable-input" data-target="input.disable">
-      <div class="form-group w-full lg:w-1/5 md:w-1/4 sm:w-1/2 mr-4 flex-grow disable-input">
+
+      <div class="form-group w-full lg:w-1/5 md:w-1/4 sm:w-1/2 mr-4 flex-grow" data-controller="search" data-search-url="<%= search_index_url %>">
         <%= form.label :letter_of_credit_id %>
-        <%= collection_select(:document, :letter_of_credit_id, LetterOfCredit.all, :id, :lc_number, {}, {class: "form-control"}) %>
+        <%= text_field_tag :query, "", placeholder: "Search LC Number", class: "form-control", data: { action: "keyup->search#fetchResults keydown->search#navigateResults", target: "search.query" }, autofocus: true, autocomplete: "off" %>
+        <div data-target="search.results"></div>
       </div>
+
+<!--      <div class="form-group w-full lg:w-1/5 md:w-1/4 sm:w-1/2 mr-4 flex-grow disable-input">-->
+        <%#= form.label :letter_of_credit_id %>
+        <%#= collection_select(:document, :letter_of_credit_id, LetterOfCredit.all, :id, :lc_number, {}, {class: "form-control"}) %>
+<!--      </div>-->
 
       <div class="form-group w-full lg:w-1/5 md:w-1/4 sm:w-1/2 mr-4 flex-grow">
         <%= form.label :issuing_bank %>

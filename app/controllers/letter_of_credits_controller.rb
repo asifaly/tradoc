@@ -11,7 +11,8 @@ class LetterOfCreditsController < ApplicationController
   end
 
   # GET /letter_of_credits/1
-  def show;
+  def show
+    @letter_of_credit = LetterOfCredit.find(params[:id])
   end
 
   # GET /letter_of_credits/new

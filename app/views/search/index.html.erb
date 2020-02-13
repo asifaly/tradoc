@@ -1,0 +1,7 @@
+<ul class="search-results" data-controller="search-results">
+  <% if @letter_of_credit.any? %>
+    <%= render partial: "letter_of_credit", collection: @letter_of_credit %>
+  <% else %>
+    <li class="search-result search-result-empty">No results</li>
+  <% end %>
+</ul>

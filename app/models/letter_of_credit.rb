@@ -1,4 +1,5 @@
 class LetterOfCredit < ApplicationRecord
+  scope :search, ->(lc_number) { where('lc_number ILIKE ?', "%#{lc_number}%") }
   has_many_attached :files
   belongs_to :user
   belongs_to :team

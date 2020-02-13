@@ -48,3 +48,49 @@
 .trixdisable{
     pointer-events: none;
 }
+
+.letter-of-credit {
+    width: 600px;
+    margin: 100px auto 0 auto;
+}
+
+.letter-of-credit-name {
+    font-size: 50px;
+}
+
+.letter-of-credit-back-to-search-link a {
+    color: black;
+    padding: 5px;
+}
+
+.search {
+    width: 600px;
+    margin: 100px auto 0 auto;
+}
+
+.search-results {
+    border: 1px solid gray;
+    border-radius: 2px;
+    border-top: none;
+    margin: 0;
+    padding: 0;
+        list-style-type: none;
+    top: -1px;
+    position: relative;
+    z-index: 10;
+}
+
+.search-result a {
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    display: block;
+}
+
+.search-result-current, .search-result:hover {
+    background: #e0e0e0;
+}
+
+.search-result-empty {
+    padding: 10px;
+}

@@ -53,8 +53,10 @@ export default class extends Controller {
     }
 
     select(event) {
-        console.log(event);
-        $("#query").val(event.target.innerText);
+        let selected_lc = event.target.innerText.trim();
+        console.log(selected_lc);
+        $("#query").val(selected_lc);
+        $("#letter_of_credit_lc_number").val(selected_lc);
         this.resultsTarget.innerHTML = "";
     }
 

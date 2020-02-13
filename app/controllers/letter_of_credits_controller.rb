@@ -67,9 +67,19 @@ class LetterOfCreditsController < ApplicationController
     redirect_to session.delete(:return_to), notice: "#{@file.filename} successfully deleted"
   end
 
+  def search
+    @letter_of_credits = LetterOfCredit.search(params[:search].split('=').last)
+    respond_to do |format|
+      format.json { render json: @letter_of_credits }
+    end
+  end
+
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
+  #
+
   def set_letter_of_credit
     @letter_of_credit = LetterOfCredit.find(params[:id])
   end

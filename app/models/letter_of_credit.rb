@@ -6,6 +6,14 @@ class LetterOfCredit < ApplicationRecord
 
   validates_presence_of :lc_number
 
+  def self.search(search)
+    if search
+      LetterOfCredit.where("lc_number ILIKE '%#{search}%'")
+    else
+      LetterOfCredit.all
+    end
+  end
+
   # validate :file_validation
   #
   # def file_validation

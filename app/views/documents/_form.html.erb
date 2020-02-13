@@ -11,9 +11,10 @@
     <%= render "shared/error_messages", resource: form.object %>
 
     <div class="flex flex-row flex-wrap" id="disable-input" data-target="input.disable">
-      <div class="form-group w-full lg:w-1/5 md:w-1/4 sm:w-1/2 mr-4 flex-grow disable-input">
+      <div class="form-group w-full lg:w-1/5 md:w-1/4 sm:w-1/2 mr-4 flex-grow" data-controller="selectize">
         <%= form.label :letter_of_credit_id %>
-        <%= collection_select(:document, :letter_of_credit_id, LetterOfCredit.all, :id, :lc_number, {}, {class: "form-control"}) %>
+        <%= form.select :letter_of_credit_id, LetterOfCredit.all.map{ |t| [t.lc_number,t.id]}, {include_blank: true, required: false, include_hidden: false}, class: "form-control selectize" %>
+        <%#= collection_select(:document, :letter_of_credit_id, LetterOfCredit.all, :id, :lc_number, {}, {class: "form-control selectize"}) %>
       </div>
 
       <div class="form-group w-full lg:w-1/5 md:w-1/4 sm:w-1/2 mr-4 flex-grow">
@@ -97,12 +98,12 @@
       </div>
     </div>
     <%# unless current_page? document_path %>
-      <div class="form-group w-full flex justify-between mt-4">
-        <%= form.button class: "btn btn-primary w-" %>
-        <% if form.object.persisted? %>
-          <%= link_to 'Delete', form.object, class: "btn btn-danger outline", method: :delete, remote: true, data: {confirm: "Are you sure?"} %>
-          </div>
-        <% end %>
-    <%# end %>
+    <div class="form-group w-full flex justify-between mt-4">
+      <%= form.button class: "btn btn-primary w-" %>
+      <% if form.object.persisted? %>
+        <%= link_to 'Delete', form.object, class: "btn btn-danger outline", method: :delete, remote: true, data: {confirm: "Are you sure?"} %>
+        </div>
+      <% end %>
+      <%# end %>
   <% end %>
 </div>

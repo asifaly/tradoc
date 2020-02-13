@@ -15,7 +15,6 @@ require("channels");
 require('jquery')
 require("trix");
 require("@rails/actiontext");
-
 // Tailwind CSS
 import "stylesheets/application";
 import "flatpickr/dist/themes/airbnb.css";

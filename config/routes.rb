@@ -3,6 +3,14 @@ Rails.application.routes.draw do
 
   resources :documents
   resources :incoterms
+  get 'letter_of_credits/:search', to: 'letter_of_credits#search'
+
+  resources :letter_of_credits do
+    member do
+      delete :delete_file_attachment
+    end
+  end
+
   # Jumpstart views
   if Rails.env.development? || Rails.env.test?
     mount Jumpstart::Engine, at: '/jumpstart'
@@ -53,11 +61,10 @@ Rails.application.routes.draw do
                registrations: 'users/registrations',
              }
 
-  resources :letter_of_credits do
-    member do
-      delete :delete_file_attachment
-    end
-  end
+
+
+
+
   resources :announcements, only: [:index]
   resources :api_tokens
   resources :teams do

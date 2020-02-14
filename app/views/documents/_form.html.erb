@@ -13,7 +13,7 @@
     <div class="flex flex-row flex-wrap" id="disable-input" data-target="input.disable">
       <div class="form-group w-full lg:w-1/5 md:w-1/4 sm:w-1/2 mr-4 flex-grow" data-controller="selectize">
         <%= form.label :letter_of_credit_id %>
-        <%= form.select :letter_of_credit_id, LetterOfCredit.all.map{ |t| [t.lc_number,t.id]}, {include_blank: true, required: false, include_hidden: false}, class: "form-control selectize" %>
+        <%= form.select :letter_of_credit_id, LetterOfCredit.all.map { |t| [t.lc_number, t.id] }, {include_blank: true, required: false, include_hidden: false}, class: "form-control selectize" %>
         <%#= collection_select(:document, :letter_of_credit_id, LetterOfCredit.all, :id, :lc_number, {}, {class: "form-control selectize"}) %>
       </div>
 
@@ -107,3 +107,37 @@
       <%# end %>
   <% end %>
 </div>
+
+<div data-controller="modal">
+  <button id="create" class="btn btn-primary" data-action="click->modal#open">Create</button>
+
+  <div id="lc-modal" data-target="modal.container" data-action="click->modal#closeBackground keyup@window->modal#closeWithKeyboard" class="hidden animated fadeIn fixed inset-0 overflow-y-auto flex items-center justify-center" style="z-index: 9999;">
+    <!-- Modal Inner Container -->
+    <div class="max-w-lg max-h-screen w-full relative">
+      <!-- Modal Card -->
+      <div class="m-1 bg-white rounded shadow">
+        <div class="p-8">
+          <h2 class="mb-4">Create New LC</h2>
+          <%= form_for LetterOfCredit.new do |form| %>
+            <div class="flex flex-row flex-wrap" id="disable-input" data-target="input.disable">
+              <div class="form-group w-full lg:w-1/5 md:w-1/4 sm:w-1/2 mr-4 flex-grow disable-input">
+                <%= form.label :lc_number %>
+                <%= form.text_field :lc_number, class: "form-control" %>
+              </div>
+              <div class="form-group w-full lg:w-1/5 md:w-1/4 sm:w-1/2 mr-4 flex-grow">
+                <%= form.label :currency_id %>
+                <%= collection_select(:letter_of_credit, :currency_id, Currency.all, :id, :code, {}, {class: "form-control"}) %>
+              </div>
+              <div class="form-group w-full flex justify-between mt-4">
+                <%= form.button class: "btn btn-primary w-" %>
+              </div>
+          <% end %>
+          <div class="flex justify-end items-center flex-wrap mt-6">
+            <button id="close-lc-modal" class="btn btn-primary" data-action="click->modal#close">Close</button>
+          </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

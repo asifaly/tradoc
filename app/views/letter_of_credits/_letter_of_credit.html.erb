@@ -16,7 +16,7 @@
       <span class="mx-2 uppercase text-xs">Expiry</span>
     </div>
     <div class="w-2/3 text-sm py-1">
-      <span class="mx-2"><%= letter_of_credit.expiry_date.strftime("%d-%b-%Y") %></span>
+      <span class="mx-2"><%= letter_of_credit.expiry_date.strftime("%d-%b-%Y") if letter_of_credit.expiry_date %></span>
     </div>
   </div>
   <div class="flex flex-row flex-wrap border-b border-gray-300">
